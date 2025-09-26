@@ -1,3 +1,5 @@
+package model;
+
 public class Veiculo {
     private String nome;
     private String cor;
@@ -5,6 +7,15 @@ public class Veiculo {
     private int numPortas;
     private String marca;
     private int ano;
+
+    public Veiculo(String nome, String cor, int numMarchas, int numPortas, String marca, int ano) {
+        this.nome = nome;
+        this.cor = cor;
+        this.numMarchas = numMarchas;
+        this.numPortas = numPortas;
+        this.marca = marca;
+        this.ano = ano;
+    }
 
     public String getNome() {
         return nome;
@@ -52,5 +63,9 @@ public class Veiculo {
 
     public void setAno(int ano) {
         this.ano = ano;
+    }
+
+    public String toString() {
+        return "Nome: " + nome + ", Cor: " + cor + ", Número de Marchas: " + numMarchas + ", Número de Portas: " + numPortas + ", Marca: " + marca + ", Ano: " + ano;
     }
 }

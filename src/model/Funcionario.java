@@ -1,3 +1,5 @@
+package model;
+
 public class Funcionario extends Pessoa {
     private int numMatricula;
     private String qualificacao;
@@ -42,5 +44,9 @@ public class Funcionario extends Pessoa {
 
     public void setCargaHorariaSemanal(int cargaHorariaSemanal) {
         this.cargaHorariaSemanal = cargaHorariaSemanal;
+    }
+
+    public String toString() {
+        return "Nome: " + getNome() + ", Matrícula: " + numMatricula + ", Qualificação: " + qualificacao + ", Descrição da Função: " + descricaoFuncao + ", Carga Horária Semanal: " + cargaHorariaSemanal + " horas";
     }
 }

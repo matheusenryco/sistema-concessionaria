@@ -1,3 +1,5 @@
+package model;
+
 public class Cliente extends Pessoa {
     private String telefone;
     private String email;
@@ -42,5 +44,9 @@ public class Cliente extends Pessoa {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String toString() {
+        return "Nome: " + getNome() + ", Telefone: " + telefone + ", Email: " + email + ", RG: " + rg + ", CPF: " + cpf;
     }
 }
