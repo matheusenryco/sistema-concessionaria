@@ -46,7 +46,12 @@ public class Funcionario extends Pessoa {
         this.cargaHorariaSemanal = cargaHorariaSemanal;
     }
 
+    @Override
     public String toString() {
-        return "Nome: " + getNome() + ", Matrícula: " + numMatricula + ", Qualificação: " + qualificacao + ", Descrição da Função: " + descricaoFuncao + ", Carga Horária Semanal: " + cargaHorariaSemanal + " horas";
+        return "Nome: " + getNome() +
+                ", Matrícula: " + numMatricula +
+                ", Qualificação: " + qualificacao +
+                ", Descrição da Função: " + descricaoFuncao +
+                ", Carga Horária Semanal: " + cargaHorariaSemanal + " horas";
     }
 }

@@ -29,9 +29,7 @@ public class Veiculo {
         return cor;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
+    public void setCor(String cor) { this.cor = cor; }
 
     public int getNumMarchas() {
         return numMarchas;
@@ -65,7 +63,13 @@ public class Veiculo {
         this.ano = ano;
     }
 
+    @Override
     public String toString() {
-        return "Nome: " + nome + ", Cor: " + cor + ", Número de Marchas: " + numMarchas + ", Número de Portas: " + numPortas + ", Marca: " + marca + ", Ano: " + ano;
+        return "Nome: " + nome +
+                "\n, Cor: " + cor +
+                "\n, Número de Marchas: " + numMarchas +
+                "\n, Número de Portas: " + numPortas +
+                "\n, Marca: " + marca +
+                "\n, Ano: " + ano;
     }
 }
