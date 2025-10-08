@@ -14,39 +14,28 @@ public class Cliente extends Pessoa {
         this.cpf = cpf;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
+    public String getTelefone() { return telefone; }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+    public void setTelefone(String telefone) { this.telefone = telefone; }
 
-    public String getEmail() {
-        return email;
-    }
+    public String getEmail() { return email; }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public void setEmail(String email) { this.email = email; }
 
-    public String getRg() {
-        return rg;
-    }
+    public String getRg() { return rg; }
 
-    public void setRg(String rg) {
-        this.rg = rg;
-    }
+    public void setRg(String rg) { this.rg = rg;}
 
-    public String getCpf() {
-        return cpf;
-    }
+    public String getCpf() { return cpf; }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
+    public void setCpf(String cpf) { this.cpf = cpf; }
 
+    @Override
     public String toString() {
-        return "Nome: " + getNome() + ", Telefone: " + telefone + ", Email: " + email + ", RG: " + rg + ", CPF: " + cpf;
+        return "Nome: " + getNome() +
+                "\n, Telefone: " + telefone +
+                "\n, Email: " + email +
+                "\n, RG: " + rg +
+                "\n, CPF: " + cpf;
     }
 }
