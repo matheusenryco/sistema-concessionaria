@@ -8,7 +8,7 @@ bin/
 .idea/
 *.iml
 
-### Eclipse ###
+# Eclipse
 .classpath
 .project
 .settings/
@@ -16,27 +16,16 @@ bin/
 .springBeans
 .sts4-cache
 
-### NetBeans ###
-<<<<<<< HEAD
+# NetBeans
 nbproject/private/
 .nb-gradle/
-=======
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-/TrabalhoPoo/
-/JavaProject3/nbproject/private/  
-JavaProject3
-TrabalhoPoo
->>>>>>> 12e4886f942750d4b42cc78f3fe6e2e67525206d
 
-### VS Code ###
+# VS Code
 .vscode/
 
-### Mac OS ###
+# Mac OS
 .DS_Store
-/TrabalhoPoo/nbproject/private/
-/TrabalhoPoo/dist/
-/TrabalhoPoo/build/
+
+# Pastas de projetos de teste (se ainda existirem)
+JavaProject3/
+TrabalhoPoo/
