@@ -2,12 +2,14 @@ package UI;
 
 import service.ClienteService;
 import service.FuncionarioService;
+import service.VeiculoService;
 import java.util.Scanner;
 
 public class MenuPrincipal {
     private final Scanner scanner;
     private final MenuCliente menuCliente;
     private final MenuFuncionario menuFuncionario;
+    private final MenuVeiculo menuVeiculo;
     
   
 
@@ -17,6 +19,8 @@ public class MenuPrincipal {
         this.menuCliente = new MenuCliente(clienteService);
         FuncionarioService funcionarioService = new FuncionarioService();
         this.menuFuncionario = new MenuFuncionario(funcionarioService);
+        VeiculoService veiculoService = new VeiculoService();
+        this.menuVeiculo = new MenuVeiculo(veiculoService);
         
     }
 
@@ -75,7 +79,7 @@ public class MenuPrincipal {
                 switch (opcao) {
                     case 1 -> menuCliente.cadastrar();
                     case 2 -> menuFuncionario.cadastrar();
-                    // case 3 -> menuVeiculo.cadastrar();
+                    case 3 -> menuVeiculo.cadastrar();
                     // case 4 -> menuVendas.cadastrar();
                     case 5 -> executando = false;
                     case 6 -> System.exit(0);

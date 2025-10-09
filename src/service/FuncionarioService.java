@@ -19,5 +19,6 @@ public class FuncionarioService {
     public void cadastrar(String nome, int numMatricula, String qualificacao, String funcao, int cargaHoraria) {
         Funcionario funcionario = new Funcionario(nome,numMatricula, qualificacao, funcao, cargaHoraria); 
         funcionarios.add(funcionario);
+        
     }
 }
