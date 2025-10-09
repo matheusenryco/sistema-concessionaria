@@ -17,11 +17,26 @@ bin/
 .sts4-cache
 
 ### NetBeans ###
+<<<<<<< HEAD
 nbproject/private/
 .nb-gradle/
+=======
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/TrabalhoPoo/
+/JavaProject3/nbproject/private/  
+JavaProject3
+TrabalhoPoo
+>>>>>>> 12e4886f942750d4b42cc78f3fe6e2e67525206d
 
 ### VS Code ###
 .vscode/
 
 ### Mac OS ###
 .DS_Store
+/TrabalhoPoo/nbproject/private/
+/TrabalhoPoo/dist/
+/TrabalhoPoo/build/
