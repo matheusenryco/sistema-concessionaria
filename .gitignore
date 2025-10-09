@@ -23,7 +23,9 @@ bin/
 /nbdist/
 /.nb-gradle/
 /TrabalhoPoo/
-/JavaProject3/  
+/JavaProject3/nbproject/private/  
+JavaProject3
+TrabalhoPoo
 
 ### VS Code ###
 .vscode/
