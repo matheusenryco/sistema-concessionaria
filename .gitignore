@@ -1,27 +1,24 @@
-### IntelliJ IDEA ###
+target/
+build/
+dist/
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-trabalho-poo.iml
+bin/
+
+# IntelliJ
+.idea/
+*.iml
 
 ### Eclipse ###
-.apt_generated
 .classpath
-.factorypath
 .project
-.settings
+.settings/
+.factorypath
 .springBeans
 .sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+nbproject/private/
+.nb-gradle/
 
 ### VS Code ###
 .vscode/
