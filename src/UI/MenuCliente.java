@@ -1,15 +1,18 @@
 package UI;
 
-import model.Cliente;
+import service.ClienteService;
+
 import java.util.Scanner;
 
 public class MenuCliente {
     private final Scanner scanner;
+    private final ClienteService clienteService;
 
-    public MenuCliente() {
+    public MenuCliente(ClienteService clienteService) {
         this.scanner = new Scanner(System.in);
+        this.clienteService = clienteService;
     }
-
+    
     public void cadastrar() {
         boolean continuarCadastro = true;
 
@@ -31,7 +34,7 @@ public class MenuCliente {
             System.out.print("CPF: ");
             String cpf = scanner.nextLine();
 
-            Cliente cliente = new Cliente(nome, telefone, email, rg, cpf);
+            clienteService.cadastrar(nome, telefone, email, rg, cpf);
 
             System.out.println("Cliente cadastrado com sucesso!");
 
