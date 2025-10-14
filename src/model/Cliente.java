@@ -33,9 +33,9 @@ public class Cliente extends Pessoa {
     @Override
     public String toString() {
         return "Nome: " + getNome() +
-                "\n, Telefone: " + telefone +
-                "\n, Email: " + email +
-                "\n, RG: " + rg +
-                "\n, CPF: " + cpf;
+                "\n Telefone: " + telefone +
+                "\n Email: " + email +
+                "\n RG: " + rg +
+                "\n CPF: " + cpf;
     }
 }
