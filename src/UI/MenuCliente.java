@@ -39,7 +39,7 @@ public class MenuCliente implements IMenu {
 
             System.out.println("Cliente cadastrado com sucesso!");
 
-            System.out.print("\nDeseja cadastrar outro cliente? (s/n): ");
+            System.out.print("\nDeseja continuar cadastro? (s/n): ");
             String resposta = scanner.nextLine().toLowerCase();
 
             if (!resposta.equals("s")) {

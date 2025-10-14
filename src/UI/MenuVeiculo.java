@@ -41,8 +41,8 @@ public class MenuVeiculo implements IMenu {
             int ano = scanner.nextInt();
             
             System.out.println("Cadastro de veiculo concluido");
-            
-            System.out.println("Deseja continuar cadastro[s/n]: ");
+
+            System.out.print("\nDeseja continuar cadastro? (s/n): ");
             String resposta = scanner.nextLine().toLowerCase();
             
             veiculoService.cadastrar(nome, cor, numMarcha, numPortas, marca, ano);
@@ -56,7 +56,7 @@ public class MenuVeiculo implements IMenu {
     @Override
     public void consultar(){
         System.out.println("=== Consultar Veículo ===");
-        System.out.print("Digite o nome do veículo: ");
+        System.out.print("Digite o nome do veiculo: ");
         String nome = scanner.nextLine();
         veiculoService.consultar(nome);
     }
