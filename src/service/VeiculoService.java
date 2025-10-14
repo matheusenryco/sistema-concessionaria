@@ -17,4 +17,13 @@ public class VeiculoService {
         Veiculo veiculo = new Veiculo(nome, cor, numMarcha, numPorta, marca, ano);
         veiculos.add(veiculo);
     }
+
+    public Veiculo consultar(String nome) {
+        for (Veiculo veiculo : veiculos) {
+            if (veiculo.getNome().equalsIgnoreCase(nome)) {
+                return veiculo;
+            }
+        }
+        return null;
+    }
 }

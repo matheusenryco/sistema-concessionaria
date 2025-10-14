@@ -43,10 +43,10 @@ public class Vendas {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dataFormatada = data.format(fmt);
         return "Vendas: " +
-                "\nData: " + dataFormatada +
-                "\n, Valor: " + valor +
-                "\n, Cliente: " + cliente +
-                "\n, Funcionario: " + funcionario +
-                "\n, veiculo: " + veiculo;
+                "\n Data: " + dataFormatada +
+                "\n Valor: " + valor +
+                "\n Cliente: " + cliente +
+                "\n Funcionario: " + funcionario +
+                "\n veiculo: " + veiculo;
     }
 }

@@ -4,16 +4,16 @@ package UI;
 import java.util.Scanner;
 import service.VeiculoService;
 
-public class MenuVeiculo {
+public class MenuVeiculo implements IMenu {
     private final Scanner scanner;
     private final VeiculoService veiculoService;
-    
-    
+
     public MenuVeiculo(VeiculoService veiculoService) {
         this.veiculoService = veiculoService;
         this.scanner = new Scanner(System.in);
     }
-    
+
+    @Override
     public void cadastrar() {
         boolean continuarCadastro = true;
         
@@ -38,9 +38,7 @@ public class MenuVeiculo {
             String marca = scanner.nextLine();
             
             System.out.print("Ano: ");
-           
             int ano = scanner.nextInt();
-            scanner.nextLine();
             
             System.out.println("Cadastro de veiculo concluido");
             
@@ -54,4 +52,19 @@ public class MenuVeiculo {
             }
         } while (continuarCadastro);
     }
+
+    @Override
+    public void consultar(){
+        System.out.println("=== Consultar Veículo ===");
+        System.out.print("Digite o nome do veículo: ");
+        String nome = scanner.nextLine();
+        veiculoService.consultar(nome);
+    }
+
+    /*
+    @Override
+    public void alterar() {
+        // TODO: Implementar alteração de cliente
+    }
+    */
 }
