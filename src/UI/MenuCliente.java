@@ -1,7 +1,7 @@
 package UI;
 
+import model.Cliente;
 import service.ClienteService;
-
 import java.util.Scanner;
 
 public class MenuCliente implements IMenu {
@@ -53,21 +53,24 @@ public class MenuCliente implements IMenu {
 
     @Override
     public void consultar() {
-        // TODO: Implementar consulta de cliente
-    }
+        System.out.println("=== Consulta de Cliente ===");
 
+        System.out.print("Digite o CPF do cliente: ");
+        String cpf = scanner.nextLine();
+
+        Cliente cliente = clienteService.buscaPorCpf(cpf);
+
+        if (cliente != null) {
+            System.out.println("Cliente encontrado:");
+            System.out.println(cliente);
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+    }
+    /*
     @Override
     public void alterar() {
         // TODO: Implementar alteração de cliente
     }
-
-    @Override
-    public void remover() {
-        // TODO: Implementar remoção de cliente
-    }
-
-    @Override
-    public void listar() {
-        // TODO: Implementar listagem de clientes
-    }
+    */
 }

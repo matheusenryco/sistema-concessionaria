@@ -10,8 +10,6 @@ public class MenuPrincipal {
     private final MenuCliente menuCliente;
     private final MenuFuncionario menuFuncionario;
     private final MenuVeiculo menuVeiculo;
-    
-  
 
     public MenuPrincipal() {
         this.scanner = new Scanner(System.in);
@@ -21,7 +19,6 @@ public class MenuPrincipal {
         this.menuFuncionario = new MenuFuncionario(funcionarioService);
         VeiculoService veiculoService = new VeiculoService();
         this.menuVeiculo = new MenuVeiculo(veiculoService);
-        
     }
 
     public void iniciarSistema() {
@@ -41,7 +38,7 @@ public class MenuPrincipal {
 
                 switch (opcao) {
                     case 1 -> menuCadastro();
-                    // case 2 -> menuConsulta();
+                    case 2 -> menuConsulta();
                     // case 3 -> menuAlteracao();
                     // case 4 -> menuRemocao();
                     case 5 -> {
@@ -90,5 +87,43 @@ public class MenuPrincipal {
                 scanner.nextLine();
             }
         }
+    }
+
+    private void menuConsulta() {
+        boolean executando = true;
+        int opcao;
+
+        while (executando) {
+            System.out.println("\n=======================================");
+            System.out.println("\t\t\tCONSULTA");
+            System.out.println("=======================================");
+            System.out.println("[1] - Cliente");
+            System.out.println("[2] - Funcionário");
+            System.out.println("[3] - Veículo");
+            System.out.println("[4] - Vendas");
+            System.out.println("[5] - Retornar ao menu principal");
+            System.out.println("[6] - Sair");
+
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcao) {
+                    case 1 -> menuCliente.consultar();
+                    case 2 -> menuFuncionario.consultar();
+                    case 3 -> menuVeiculo.consultar();
+                    // case 4 -> menuVendas.cadastrar();
+                    case 5 -> executando = false;
+                    case 6 -> System.exit(0);
+                    default -> System.out.println("Opção inválida!");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada inválida! Digite apenas números.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    private void menuAlteracao() {
     }
 }

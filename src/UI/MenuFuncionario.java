@@ -1,9 +1,10 @@
 package UI;
 
+import model.Funcionario;
 import service.FuncionarioService;
 import java.util.Scanner;
 
-public class MenuFuncionario {
+public class MenuFuncionario implements IMenu {
     private final Scanner scanner;
     private final FuncionarioService funcionarioService;
 
@@ -12,6 +13,7 @@ public class MenuFuncionario {
         this.funcionarioService = funcionarioService;
     }
 
+    @Override
     public void cadastrar() {
         boolean continuarCadastro = true;
 
@@ -49,4 +51,28 @@ public class MenuFuncionario {
 
         System.out.println("Voltando ao menu principal...");
     }
+
+    @Override
+    public void consultar() {
+        System.out.println("=== Consultar Funcionário ===");
+        System.out.print("Digite o número de matrícula: ");
+        int numMatricula = scanner.nextInt();
+        scanner.nextLine();
+
+        Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
+
+        if (funcionario != null) {
+            System.out.println("\n--- Funcionário Encontrado ---");
+            System.out.println(funcionario);
+        } else {
+            System.out.println("Funcionário não encontrado!");
+        }
+    }
+
+    /*
+    @Override
+    public void alterar() {
+        // TODO: Implementar alteração de cliente
+    }
+    */
 }
