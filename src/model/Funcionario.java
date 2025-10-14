@@ -14,37 +14,21 @@ public class Funcionario extends Pessoa {
         this.cargaHorariaSemanal = cargaHorariaSemanal;
     }
 
-    public int getNumMatricula() {
-        return numMatricula;
-    }
+    public int getNumMatricula() { return numMatricula; }
 
-    public void setNumMatricula(int numMatricula) {
-        this.numMatricula = numMatricula;
-    }
+    public void setNumMatricula(int numMatricula) { this.numMatricula = numMatricula; }
 
-    public String getQualificacao() {
-        return qualificacao;
-    }
+    public String getQualificacao() { return qualificacao; }
 
-    public void setQualificacao(String qualificacao) {
-        this.qualificacao = qualificacao;
-    }
+    public void setQualificacao(String qualificacao) { this.qualificacao = qualificacao; }
 
-    public String getDescricaoFuncao() {
-        return descricaoFuncao;
-    }
+    public String getDescricaoFuncao() { return descricaoFuncao; }
 
-    public void setDescricaoFuncao(String descricaoFuncao) {
-        this.descricaoFuncao = descricaoFuncao;
-    }
+    public void setDescricaoFuncao(String descricaoFuncao) { this.descricaoFuncao = descricaoFuncao; }
 
-    public int getCargaHorariaSemanal() {
-        return cargaHorariaSemanal;
-    }
+    public int getCargaHorariaSemanal() { return cargaHorariaSemanal; }
 
-    public void setCargaHorariaSemanal(int cargaHorariaSemanal) {
-        this.cargaHorariaSemanal = cargaHorariaSemanal;
-    }
+    public void setCargaHorariaSemanal(int cargaHorariaSemanal) { this.cargaHorariaSemanal = cargaHorariaSemanal; }
 
     @Override
     public String toString() {
