@@ -2,18 +2,23 @@ package service;
 
 import model.Cliente;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 public class ClienteService {
-    private List<Cliente> clientes;
-
-    public ClienteService() {
-        this.clientes = new ArrayList<>();
-    }
+    private final Set<Cliente> clientes = new HashSet<>();
 
     public void cadastrar(String nome, String telefone, String email, String rg, String cpf) {
         Cliente cliente = new Cliente(nome, telefone, email, rg, cpf);
         clientes.add(cliente);
+    }
+
+    public Cliente buscaPorCpf(String cpf) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente;
+            }
+        }
+        return null;
     }
 }
