@@ -39,7 +39,7 @@ public class MenuFuncionario implements IMenu {
 
             System.out.println("Funcionario cadastrado com sucesso");
 
-            System.out.print("\nDeseja cadastrar outro funcionario? (s/n): ");
+            System.out.print("\nDeseja continuar cadastro? (s/n): ");
             String resposta = scanner.nextLine().toLowerCase();
 
             funcionarioService.cadastrar(nome, numMatricula, qualificacao, funcao, cargaHoraria);
