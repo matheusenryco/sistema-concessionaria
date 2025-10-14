@@ -56,14 +56,10 @@ public class MenuVeiculo implements IMenu {
             }
             if (!resposta.equals("s") && !resposta.equals("n")) {
                 while(!resposta.equals("s") && !resposta.equals("n")) {
-                    
                     System.out.println("Resposta invalida");
                     System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
                     resposta = scanner.nextLine().toLowerCase();
-                    
                 }
-                
-                
             }
         } while (continuarCadastro);
     }
