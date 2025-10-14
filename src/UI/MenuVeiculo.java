@@ -12,8 +12,6 @@ public class MenuVeiculo {
     public MenuVeiculo(VeiculoService veiculoService) {
         this.veiculoService = veiculoService;
         this.scanner = new Scanner(System.in);
-        
-        
     }
     
     public void cadastrar() {
@@ -50,15 +48,10 @@ public class MenuVeiculo {
             String resposta = scanner.nextLine().toLowerCase();
             
             veiculoService.cadastrar(nome, cor, numMarcha, numPortas, marca, ano);
-            
-            
-            
+
             if (!resposta.equals("s")) {
                 continuarCadastro = false;
             }
-            
         } while (continuarCadastro);
     }
-    
-    
 }
