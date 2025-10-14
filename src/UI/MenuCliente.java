@@ -4,7 +4,7 @@ import service.ClienteService;
 
 import java.util.Scanner;
 
-public class MenuCliente {
+public class MenuCliente implements IMenu {
     private final Scanner scanner;
     private final ClienteService clienteService;
 
@@ -12,7 +12,8 @@ public class MenuCliente {
         this.scanner = new Scanner(System.in);
         this.clienteService = clienteService;
     }
-    
+
+    @Override
     public void cadastrar() {
         boolean continuarCadastro = true;
 
@@ -48,5 +49,25 @@ public class MenuCliente {
         } while (continuarCadastro);
 
         System.out.println("Voltando ao menu principal...");
+    }
+
+    @Override
+    public void consultar() {
+        // TODO: Implementar consulta de cliente
+    }
+
+    @Override
+    public void alterar() {
+        // TODO: Implementar alteração de cliente
+    }
+
+    @Override
+    public void remover() {
+        // TODO: Implementar remoção de cliente
+    }
+
+    @Override
+    public void listar() {
+        // TODO: Implementar listagem de clientes
     }
 }
