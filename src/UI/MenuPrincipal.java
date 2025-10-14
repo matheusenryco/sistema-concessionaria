@@ -45,10 +45,10 @@ public class MenuPrincipal {
                         executando = false;
                         System.out.println("\nEncerrando sistema...");
                     }
-                    default -> System.out.println("Opção inválida!");
+                    default -> System.out.println("Opcao invalida!");
                 }
             } catch (Exception e) {
-                System.out.println("Entrada inválida! Digite apenas números.");
+                System.out.println("Entrada invalida! Digite apenas numeros.");
                 scanner.nextLine();
             }
         }
@@ -63,8 +63,8 @@ public class MenuPrincipal {
             System.out.println("\t\t\tCADASTRO");
             System.out.println("=======================================");
             System.out.println("[1] - Cliente");
-            System.out.println("[2] - Funcionário");
-            System.out.println("[3] - Veículo");
+            System.out.println("[2] - Funcionario");
+            System.out.println("[3] - Veiculo");
             System.out.println("[4] - Vendas");
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
@@ -80,10 +80,10 @@ public class MenuPrincipal {
                     // case 4 -> menuVendas.cadastrar();
                     case 5 -> executando = false;
                     case 6 -> System.exit(0);
-                    default -> System.out.println("Opção inválida!");
+                    default -> System.out.println("Opcao invalida!");
                 }
             } catch (Exception e) {
-                System.out.println("Entrada inválida! Digite apenas números.");
+                System.out.println("Entrada invalida! Digite apenas numeros.");
                 scanner.nextLine();
             }
         }
@@ -98,8 +98,8 @@ public class MenuPrincipal {
             System.out.println("\t\t\tCONSULTA");
             System.out.println("=======================================");
             System.out.println("[1] - Cliente");
-            System.out.println("[2] - Funcionário");
-            System.out.println("[3] - Veículo");
+            System.out.println("[2] - Funcionario");
+            System.out.println("[3] - Veiculo");
             System.out.println("[4] - Vendas");
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
@@ -115,10 +115,10 @@ public class MenuPrincipal {
                     // case 4 -> menuVendas.cadastrar();
                     case 5 -> executando = false;
                     case 6 -> System.exit(0);
-                    default -> System.out.println("Opção inválida!");
+                    default -> System.out.println("Opcao invalida!");
                 }
             } catch (Exception e) {
-                System.out.println("Entrada inválida! Digite apenas números.");
+                System.out.println("Entrada invalida! Digite apenas numeros.");
                 scanner.nextLine();
             }
         }

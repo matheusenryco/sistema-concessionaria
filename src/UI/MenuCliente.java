@@ -45,6 +45,20 @@ public class MenuCliente implements IMenu {
             if (!resposta.equals("s")) {
                 continuarCadastro = false;
             }
+            if (!resposta.equals("n")) {
+                continuarCadastro = true;
+            }
+            if (!resposta.equals("s") && !resposta.equals("n")) {
+                while(!resposta.equals("s") && !resposta.equals("n")) {
+                    
+                    System.out.println("Resposta invalida");
+                    System.out.print("\nDeseja cadastrar outro cliente? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
+                    
+                }
+                
+                
+            }
 
         } while (continuarCadastro);
 

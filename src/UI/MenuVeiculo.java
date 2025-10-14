@@ -39,6 +39,7 @@ public class MenuVeiculo implements IMenu {
             
             System.out.print("Ano: ");
             int ano = scanner.nextInt();
+            scanner.nextLine();
             
             System.out.println("Cadastro de veiculo concluido");
             
@@ -49,6 +50,20 @@ public class MenuVeiculo implements IMenu {
 
             if (!resposta.equals("s")) {
                 continuarCadastro = false;
+            }
+            if (!resposta.equals("n")) {
+                continuarCadastro = true;
+            }
+            if (!resposta.equals("s") && !resposta.equals("n")) {
+                while(!resposta.equals("s") && !resposta.equals("n")) {
+                    
+                    System.out.println("Resposta invalida");
+                    System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
+                    
+                }
+                
+                
             }
         } while (continuarCadastro);
     }

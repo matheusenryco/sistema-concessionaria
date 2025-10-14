@@ -44,8 +44,20 @@ public class MenuFuncionario implements IMenu {
 
             funcionarioService.cadastrar(nome, numMatricula, qualificacao, funcao, cargaHoraria);
 
-            if (!resposta.equals("s")){
+            if (!resposta.equals("s")) {
                 continuarCadastro = false;
+            }
+            if (!resposta.equals("n")) {
+                continuarCadastro = true;
+            }
+            if (!resposta.equals("s") && !resposta.equals("n")) {
+                while(!resposta.equals("s") && !resposta.equals("n")) {
+                    
+                    System.out.println("Resposta invalida");
+                    System.out.print("\nDeseja cadastrar outro funcionario? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
+                    
+                }
             }
         } while(continuarCadastro);
 
@@ -54,18 +66,18 @@ public class MenuFuncionario implements IMenu {
 
     @Override
     public void consultar() {
-        System.out.println("=== Consultar Funcionário ===");
-        System.out.print("Digite o número de matrícula: ");
+        System.out.println("=== Consultar Funcionario ===");
+        System.out.print("Digite o numero de matricula: ");
         int numMatricula = scanner.nextInt();
         scanner.nextLine();
 
         Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
 
         if (funcionario != null) {
-            System.out.println("\n--- Funcionário Encontrado ---");
+            System.out.println("\n--- Funcionario Encontrado ---");
             System.out.println(funcionario);
         } else {
-            System.out.println("Funcionário não encontrado!");
+            System.out.println("Funcionario nao encontrado!");
         }
     }
 
