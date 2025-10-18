@@ -44,7 +44,7 @@ public class Veiculo {
     @Override
     public String toString() {
         return "Nome: " + nome +
-                "\n or: " + cor +
+                "\n cor: " + cor +
                 "\n Número de Marchas: " + numMarchas +
                 "\n Número de Portas: " + numPortas +
                 "\n Marca: " + marca +
