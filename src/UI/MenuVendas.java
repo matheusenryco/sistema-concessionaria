@@ -75,5 +75,10 @@ public class MenuVendas implements IMenu {
     @Override
     public void consultar() {
     }
+
+    @Override
+    public void alterar() {
+    }
+    
 }
 

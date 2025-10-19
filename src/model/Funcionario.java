@@ -33,9 +33,9 @@ public class Funcionario extends Pessoa {
     @Override
     public String toString() {
         return "Nome: " + getNome() +
-                "Matrícula: " + numMatricula +
-                "Qualificação: " + qualificacao +
-                "Descrição da Função: " + descricaoFuncao +
-                "Carga Horária Semanal: " + cargaHorariaSemanal + " horas";
+                " Matricula: " + numMatricula +
+                " Qualificacao: " + qualificacao +
+                " Descricaoo da Funcao : " + descricaoFuncao +
+                " Carga Horaria Semanal : " + cargaHorariaSemanal + " horas";
     }
 }

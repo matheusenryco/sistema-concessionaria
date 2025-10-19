@@ -3,6 +3,7 @@ package UI;
 import service.ClienteService;
 import service.FuncionarioService;
 import service.VeiculoService;
+import UI.MenuCliente;
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -39,7 +40,7 @@ public class MenuPrincipal {
                 switch (opcao) {
                     case 1 -> menuCadastro();
                     case 2 -> menuConsulta();
-                    // case 3 -> menuAlteracao();
+                    case 3 -> menuAlteracao();
                     // case 4 -> menuRemocao();
                     case 5 -> {
                         executando = false;
@@ -125,5 +126,49 @@ public class MenuPrincipal {
     }
 
     private void menuAlteracao() {
+        boolean continuarAlteracao = true;
+        int opcao;
+        while(continuarAlteracao) {
+            
+            System.out.println("\n=======================================");
+            System.out.println("ALTERAR");
+            System.out.println("\n=======================================");
+            System.out.println("O que deseja alterar: ");
+            System.out.println("[1] - Cliente");
+            System.out.println("[2] - Funcionario");
+            System.out.println("[3] - Veiculo");
+            System.out.println("[4] - Vendas");
+            System.out.println("[5] - Retornar ao menu principal");
+            System.out.println("[6] - Sair");
+            
+            
+            
+            try {
+                
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+                switch(opcao) {
+
+                    case 1 -> menuCliente.alterar();
+                    case 2 -> menuFuncionario.alterar();
+                    case 3 -> menuVeiculo.alterar();
+                    case 5 -> continuarAlteracao = false;
+                    default  -> System.out.println("Opcao invalida!");
+                
+            }   }catch (Exception e) {
+                    System.out.println("Entrada invalida, digite apenas numeros");
+                    scanner.nextLine();
+            
+            
+
+                
+                        
+                        
+            }
+            
+            
+        }
+
+        
     }
 }

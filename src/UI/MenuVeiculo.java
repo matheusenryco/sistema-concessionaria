@@ -72,10 +72,40 @@ public class MenuVeiculo implements IMenu {
         veiculoService.consultar(nome);
     }
 
-    /*
+    
     @Override
     public void alterar() {
-        // TODO: Implementar alteração de cliente
-    }
-    */
+        boolean continuarAlteracao = true;
+        int opcao;
+        while(continuarAlteracao) {
+            
+            System.out.println("--- Alteracao de Veiculo ---");
+            System.out.println("O que deseja alterar: ");
+            System.out.println("[1] - Nome");
+            System.out.println("[2] - Cor");
+            System.out.println("[3] - Numero de marchas");
+            System.out.println("[4] - Numero de portas");
+            System.out.println("[5] - Marca");
+            System.out.println("[6] - Ano");
+            System.out.println("[7] - Voltar ao menu principal");
+            System.out.println("[8] - Sair");
+            opcao = scanner.nextInt();
+        
+            switch(opcao) {
+                case 1 -> veiculoService.alterarNome();
+                case 2 -> veiculoService.alterarCor();
+                case 3 -> veiculoService.alterarNumMarcha();
+                case 4 -> veiculoService.alterarNumPorta();
+                case 5 -> veiculoService.alterarMarca();
+                case 6 -> veiculoService.alterarAno();
+                case 7 -> continuarAlteracao = false;
+                case 8 -> System.exit(0);
+        
+        
+            }
+    
 }
+    
+    }
+}
+        

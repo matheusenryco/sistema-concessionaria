@@ -1,5 +1,6 @@
 package UI;
 
+import java.time.Clock;
 import model.Cliente;
 import service.ClienteService;
 import java.util.Scanner;
@@ -66,6 +67,7 @@ public class MenuCliente implements IMenu {
 
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
+        
 
         Cliente cliente = clienteService.buscaPorCpf(cpf);
 
@@ -75,11 +77,44 @@ public class MenuCliente implements IMenu {
         } else {
             System.out.println("Cliente não encontrado.");
         }
+        
     }
-    /*
+    
     @Override
     public void alterar() {
-        // TODO: Implementar alteração de cliente
+        boolean continuarAlteracao = true;
+        int opcao;
+        while(continuarAlteracao) {
+            
+            System.out.println("Alteracao de Cliente");
+            System.out.println("O que deseja alterar: ");
+            System.out.println("[1] - Nome");
+            System.out.println("[2] - Telefone");
+            System.out.println("[3] - Email");
+            System.out.println("[4] - RG");
+            System.out.println("[5] - CPF");
+            System.out.println("[6] - Voltar ao menu principal");
+            System.out.println("[7] - Sair");
+            opcao = scanner.nextInt();
+        
+            switch(opcao) {
+                case 1 -> clienteService.alterarNome();
+                case 2 -> clienteService.alterarTelefone();
+                case 3 -> clienteService.alterarEmail();
+                case 4 -> clienteService.alterarRg();
+                case 5 -> clienteService.alterarCpf();
+                case 6 -> continuarAlteracao = false;
+                case 7 -> System.exit(0);
+            
+        }
+            
+        }
+        
+        
+        
+        
+        
+       
     }
-    */
+    
 }

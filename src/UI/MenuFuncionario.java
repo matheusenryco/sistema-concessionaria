@@ -81,10 +81,36 @@ public class MenuFuncionario implements IMenu {
         }
     }
 
-    /*
+    
     @Override
     public void alterar() {
-        // TODO: Implementar alteração de cliente
+        boolean continuarAlteracao = true;
+        int opcao;
+        while(continuarAlteracao) {
+            
+            System.out.println("--- Alteracao de Funcionario ---");
+            System.out.println("O que deseja alterar: ");
+            System.out.println("[1] - Nome");
+            System.out.println("[2] - Numero de matricula");
+            System.out.println("[3] - Qualificacao");
+            System.out.println("[4] - Descricao de funcao");
+            System.out.println("[5] - Carga horaria");
+            System.out.println("[6] - Voltar ao menu principal");
+            System.out.println("[7] - Sair");
+            opcao = scanner.nextInt();
+        
+            switch(opcao) {
+                case 1 -> funcionarioService.alterarNome();
+                case 2 -> funcionarioService.alterarNumMatricula();
+                case 3 -> funcionarioService.alterarQualificacao();
+                case 4 -> funcionarioService.alterarDescricaoFuncao();
+                case 5 -> funcionarioService.alterarCargaHoraria();
+                case 6 -> continuarAlteracao = false;
+                case 7 -> System.exit(0);
+        
+        
     }
-    */
+        }
+    
+}
 }

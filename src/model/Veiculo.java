@@ -45,8 +45,8 @@ public class Veiculo {
     public String toString() {
         return "Nome: " + nome +
                 "\n cor: " + cor +
-                "\n Número de Marchas: " + numMarchas +
-                "\n Número de Portas: " + numPortas +
+                "\n Numero de Marchas : " + numMarchas +
+                "\n Numero de Portas : " + numPortas +
                 "\n Marca: " + marca +
                 "\n Ano: " + ano;
     }
