@@ -123,4 +123,23 @@ public class MenuFuncionario implements IMenu {
             }
         }
     }
+    
+    public void remover() {
+        boolean continuarRemocao = true;
+        while (continuarRemocao) {   
+            System.out.println("Remocao de Funcionario");
+            System.out.print("Digite o numero de matricula do funcionario que deseja remover: ");
+            int numMatricula = scanner.nextInt();
+            scanner.nextLine();
+            Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
+            if (funcionario != null) {
+                System.out.println("Funcionario encontrado!");
+                funcionarioService.remover(funcionario); 
+                continuarRemocao = false;
+            }
+            else {
+                System.out.println("Funcionario nao encontrado");
+            }     
+        }
+    }
 }

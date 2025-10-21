@@ -41,7 +41,7 @@ public class MenuPrincipal {
                     case 1 -> menuCadastro();
                     case 2 -> menuConsulta();
                     case 3 -> menuAlteracao();
-                    // case 4 -> menuRemocao();
+                    case 4 -> menuRemocao();
                     case 5 -> {
                         executando = false;
                         System.out.println("\nEncerrando sistema...");
@@ -157,5 +157,33 @@ public class MenuPrincipal {
                 scanner.nextLine();
             }
         }
+    }
+    private void menuRemocao() {
+        boolean continuarRemocao = true;
+        int opcao;
+        while (continuarRemocao) {
+            System.out.println("\n=======================================");
+            System.out.println("REMOVER");
+            System.out.println("\n=======================================");
+            System.out.println("O que deseja remover: ");
+            System.out.println("[1] - Cliente");
+            System.out.println("[2] - Funcionario");
+            System.out.println("[3] - Veiculo");
+            System.out.println("[4] - Vendas");
+            System.out.println("[5] - Retornar ao menu principal");
+            System.out.println("[6] - Sair");
+            opcao = scanner.nextInt();
+            
+            
+            switch (opcao) {
+                case 1 -> menuCliente.remover();
+                case 2 -> menuFuncionario.remover();
+                case 3 -> menuVeiculo.remover();
+               // case 4 -> //menuVendas.remover();
+                case 5 -> continuarRemocao = false;
+                case 6 -> System.exit(0);
+            }
+        } 
+        
     }
 }

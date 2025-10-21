@@ -130,4 +130,9 @@ public class ClienteService {
             System.out.println("Cliente nao encontrado.");
         }
     }
+    
+    public void remover(Cliente cliente) {
+        clientes.remove(cliente);
+        System.out.println("Cliente removido com sucesso"); 
+    }
 }

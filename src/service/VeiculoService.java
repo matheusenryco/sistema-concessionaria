@@ -145,4 +145,9 @@ public class VeiculoService {
             System.out.println("Veiculo nao encontrado.");
         }
     }
+    
+    public void remover(Veiculo veiculo) {
+        veiculos.remove(veiculo);
+        System.out.println("Veiculo removido com sucesso");
+    }
 }
