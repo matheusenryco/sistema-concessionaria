@@ -78,7 +78,7 @@ public class MenuCliente implements IMenu {
         int opcao;
 
         while (continuarAlteracao) {
-            System.out.println("Alteracao de Cliente");
+            System.out.println("=== Alteracao de Cliente ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Nome");
             System.out.println("[2] - Telefone");
