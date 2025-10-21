@@ -1,18 +1,23 @@
 package model;
 
-public class Funcionario extends Pessoa {
+public class Funcionario {
+    private String nome;
     private int numMatricula;
     private String qualificacao;
     private String descricaoFuncao;
     private int cargaHorariaSemanal;
 
     public Funcionario(String nome, int numMatricula, String qualificacao,String descricaoFuncao, int cargaHorariaSemanal) {
-        super(nome);
+        this.nome = nome;
         this.numMatricula = numMatricula;
         this.qualificacao = qualificacao;
         this.descricaoFuncao = descricaoFuncao;
         this.cargaHorariaSemanal = cargaHorariaSemanal;
     }
+
+    public String getNome() { return nome; }
+
+    public void setNome(String nome) { this.nome = nome; }
 
     public int getNumMatricula() { return numMatricula; }
 
