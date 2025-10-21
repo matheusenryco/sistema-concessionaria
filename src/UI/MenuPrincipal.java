@@ -3,6 +3,8 @@ package UI;
 import service.ClienteService;
 import service.FuncionarioService;
 import service.VeiculoService;
+import service.VendasService;
+import UI.MenuVendas;
 import UI.MenuCliente;
 import java.util.Scanner;
 
@@ -11,6 +13,7 @@ public class MenuPrincipal {
     private final MenuCliente menuCliente;
     private final MenuFuncionario menuFuncionario;
     private final MenuVeiculo menuVeiculo;
+    private final MenuVendas menuVendas;
 
     public MenuPrincipal() {
         this.scanner = new Scanner(System.in);
@@ -20,6 +23,8 @@ public class MenuPrincipal {
         this.menuFuncionario = new MenuFuncionario(funcionarioService);
         VeiculoService veiculoService = new VeiculoService();
         this.menuVeiculo = new MenuVeiculo(veiculoService);
+        VendasService vendasService = new VendasService();
+        this.menuVendas = new MenuVendas(clienteService, funcionarioService, veiculoService, vendasService);
     }
 
     public void iniciarSistema() {
@@ -78,7 +83,7 @@ public class MenuPrincipal {
                     case 1 -> menuCliente.cadastrar();
                     case 2 -> menuFuncionario.cadastrar();
                     case 3 -> menuVeiculo.cadastrar();
-                    // case 4 -> menuVendas.cadastrar();
+                    case 4 -> menuVendas.cadastrar();
                     case 5 -> executando = false;
                     case 6 -> System.exit(0);
                     default -> System.out.println("Opcao invalida!");
@@ -173,8 +178,7 @@ public class MenuPrincipal {
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
             opcao = scanner.nextInt();
-            
-            
+
             switch (opcao) {
                 case 1 -> menuCliente.remover();
                 case 2 -> menuFuncionario.remover();
@@ -183,7 +187,6 @@ public class MenuPrincipal {
                 case 5 -> continuarRemocao = false;
                 case 6 -> System.exit(0);
             }
-        } 
-        
+        }
     }
 }
