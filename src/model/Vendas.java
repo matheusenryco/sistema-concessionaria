@@ -43,10 +43,10 @@ public class Vendas {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
      
         return "Vendas: " +
-                "\n Data: " + fmt +
-                "\n Valor: R$ " + valor +
-                "\n Cliente: " + cliente +
-                "\n Funcionario: " + funcionario +
-                "\n veiculo: " + veiculo;
+                "\nData: " + fmt +
+                "\nValor: R$ " + valor +
+                "\nCliente: " + cliente +
+                "\nFuncionario: " + funcionario +
+                "\nveiculo: " + veiculo;
     }
 }
