@@ -2,6 +2,7 @@ package UI;
 
 import java.util.Scanner;
 import service.VeiculoService;
+import model.Veiculo;
 
 public class MenuVeiculo implements IMenu {
     private final Scanner scanner;
@@ -101,6 +102,24 @@ public class MenuVeiculo implements IMenu {
                 case 8 -> System.exit(0);
                 default -> System.out.println("Opcao invalida!");
             }
+        }
+    }
+    
+    public void remover() {
+        boolean continuarRemocao = true;
+        while (continuarRemocao) {   
+            System.out.println("Remocao de Veiculo");
+            System.out.print("Digite o nome do veiculo que deseja remover: ");
+            String nomeVeiculo = scanner.nextLine();          
+            Veiculo veiculo = veiculoService.consultar(nomeVeiculo);
+            if (veiculo != null) {
+                System.out.println("Veiculo encontrado!");
+                veiculoService.remover(veiculo); 
+                continuarRemocao = false;
+            }
+            else {
+                System.out.println("Veiculo nao encontrado");
+            }     
         }
     }
 }

@@ -135,4 +135,8 @@ public class FuncionarioService {
             System.out.println("Funcionario nao encontrado.");
         }
     }
+    public void remover(Funcionario funcionario){
+        funcionarios.remove(funcionario);
+        System.out.println("Funcionario removido com sucesso");
+    }
 }

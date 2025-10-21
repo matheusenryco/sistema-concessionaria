@@ -107,4 +107,21 @@ public class MenuCliente implements IMenu {
             }
         }
     }
+    public void remover() {
+        boolean continuarRemocao = true;
+        while (continuarRemocao) {   
+            System.out.println("Remocao de Cliente");
+            System.out.print("Digite o CPF do cliente que deseja remover: ");
+            String cpf = scanner.nextLine();
+            Cliente cliente = clienteService.buscaPorCpf(cpf);
+            if (cliente != null) {
+                System.out.println("Cliente encontrado!");
+                clienteService.remover(cliente); 
+                continuarRemocao = false;
+            }
+            else {
+                System.out.println("Cliente não encontrado");
+            }     
+        } 
+    }
 }
