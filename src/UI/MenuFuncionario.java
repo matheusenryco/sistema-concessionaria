@@ -17,15 +17,20 @@ public class MenuFuncionario implements IMenu {
     public void cadastrar() {
         boolean continuarCadastro = true;
 
-        do{
+        while (continuarCadastro) {
             System.out.println("=== Cadastro de funcionario ===");
 
             System.out.print("Nome: ");
             String nome = scanner.nextLine();
 
             System.out.print("Numero de matricula: ");
-            int numMatricula = scanner.nextInt();
-            scanner.nextLine();
+            int numMatricula;
+            try {
+                numMatricula = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada invalida para matricula. Cancelando este cadastro.");
+                continue;
+            }
 
             System.out.print("Qualificacao: ");
             String qualificacao = scanner.nextLine();
@@ -34,32 +39,28 @@ public class MenuFuncionario implements IMenu {
             String funcao = scanner.nextLine();
 
             System.out.print("Carga horaria semanal: ");
-            int cargaHoraria = scanner.nextInt();
-            scanner.nextLine();
-
-            System.out.println("Funcionario cadastrado com sucesso");
-
-            System.out.print("\nDeseja continuar cadastro? (s/n): ");
-            String resposta = scanner.nextLine().toLowerCase();
+            int cargaHoraria;
+            try {
+                cargaHoraria = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada invalida para carga horaria. Cancelando este cadastro.");
+                continue;
+            }
 
             funcionarioService.cadastrar(nome, numMatricula, qualificacao, funcao, cargaHoraria);
+            System.out.println("Funcionario cadastrado com sucesso");
 
-            if (!resposta.equals("s")) {
-                continuarCadastro = false;
-            }
-            if (!resposta.equals("n")) {
-                continuarCadastro = true;
-            }
-            if (!resposta.equals("s") && !resposta.equals("n")) {
-                while(!resposta.equals("s") && !resposta.equals("n")) {
-                    
+            String resposta;
+            do {
+                System.out.print("\nDeseja cadastrar outro funcionario? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+                if (!resposta.equals("s") && !resposta.equals("n")) {
                     System.out.println("Resposta invalida");
-                    System.out.print("\nDeseja cadastrar outro funcionario? (s/n): ");
-                    resposta = scanner.nextLine().toLowerCase();
-                    
                 }
-            }
-        } while(continuarCadastro);
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarCadastro = resposta.equals("s");
+        }
 
         System.out.println("Voltando ao menu principal...");
     }
@@ -68,27 +69,32 @@ public class MenuFuncionario implements IMenu {
     public void consultar() {
         System.out.println("=== Consultar Funcionario ===");
         System.out.print("Digite o numero de matricula: ");
-        int numMatricula = scanner.nextInt();
-        scanner.nextLine();
+
+        int numMatricula;
+        try {
+            numMatricula = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada invalida para matricula.");
+            return;
+        }
 
         Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
 
         if (funcionario != null) {
-            System.out.println("\n--- Funcionario Encontrado ---");
+            System.out.println("\n=== Funcionario Encontrado ===");
             System.out.println(funcionario);
         } else {
             System.out.println("Funcionario nao encontrado!");
         }
     }
 
-    
     @Override
     public void alterar() {
         boolean continuarAlteracao = true;
         int opcao;
-        while(continuarAlteracao) {
-            
-            System.out.println("--- Alteracao de Funcionario ---");
+
+        while (continuarAlteracao) {
+            System.out.println("=== Alteracao de Funcionario ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Nome");
             System.out.println("[2] - Numero de matricula");
@@ -97,9 +103,15 @@ public class MenuFuncionario implements IMenu {
             System.out.println("[5] - Carga horaria");
             System.out.println("[6] - Voltar ao menu principal");
             System.out.println("[7] - Sair");
-            opcao = scanner.nextInt();
-        
-            switch(opcao) {
+
+            try {
+                opcao = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada invalida! Digite apenas numeros.");
+                continue;
+            }
+
+            switch (opcao) {
                 case 1 -> funcionarioService.alterarNome();
                 case 2 -> funcionarioService.alterarNumMatricula();
                 case 3 -> funcionarioService.alterarQualificacao();
@@ -107,10 +119,8 @@ public class MenuFuncionario implements IMenu {
                 case 5 -> funcionarioService.alterarCargaHoraria();
                 case 6 -> continuarAlteracao = false;
                 case 7 -> System.exit(0);
-        
-        
-    }
+                default -> System.out.println("Opcao invalida!");
+            }
         }
-    
-}
+    }
 }
