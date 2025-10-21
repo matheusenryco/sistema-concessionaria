@@ -1,6 +1,5 @@
 package UI;
 
-import java.time.Clock;
 import model.Cliente;
 import service.ClienteService;
 import java.util.Scanner;
@@ -16,7 +15,7 @@ public class MenuCliente implements IMenu {
 
     @Override
     public void cadastrar() {
-        boolean continuarCadastro = true;
+        boolean continuarCadastro;
 
         do {
             System.out.println("=== Cadastro de Cliente ===");
@@ -37,25 +36,20 @@ public class MenuCliente implements IMenu {
             String cpf = scanner.nextLine();
 
             clienteService.cadastrar(nome, telefone, email, rg, cpf);
-
             System.out.println("Cliente cadastrado com sucesso!");
 
-            System.out.print("\nDeseja continuar cadastro? (s/n): ");
-            String resposta = scanner.nextLine().toLowerCase();
+            String resposta;
+            do {
+                System.out.print("\nDeseja cadastrar outro cliente? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
 
-            if (!resposta.equals("s")) {
-                continuarCadastro = false;
-            }
-            if (!resposta.equals("n")) {
-                continuarCadastro = true;
-            }
-            if (!resposta.equals("s") && !resposta.equals("n")) {
-                while (!resposta.equals("s") && !resposta.equals("n")) {
+                if (!resposta.equals("s") && !resposta.equals("n")) {
                     System.out.println("Resposta invalida");
-                    System.out.print("\nDeseja continuar cadastro? (s/n): ");
-                    resposta = scanner.nextLine().toLowerCase();
-                    }
-            }
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarCadastro = resposta.equals("s");
+
         } while (continuarCadastro);
 
         System.out.println("Voltando ao menu principal...");
@@ -67,7 +61,6 @@ public class MenuCliente implements IMenu {
 
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
-        
 
         Cliente cliente = clienteService.buscaPorCpf(cpf);
 
@@ -77,15 +70,14 @@ public class MenuCliente implements IMenu {
         } else {
             System.out.println("Cliente não encontrado.");
         }
-        
     }
-    
+
     @Override
     public void alterar() {
         boolean continuarAlteracao = true;
         int opcao;
-        while(continuarAlteracao) {
-            
+
+        while (continuarAlteracao) {
             System.out.println("Alteracao de Cliente");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Nome");
@@ -95,9 +87,15 @@ public class MenuCliente implements IMenu {
             System.out.println("[5] - CPF");
             System.out.println("[6] - Voltar ao menu principal");
             System.out.println("[7] - Sair");
-            opcao = scanner.nextInt();
-        
-            switch(opcao) {
+
+            try {
+                opcao = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada invalida! Digite apenas numeros.");
+                continue;
+            }
+
+            switch (opcao) {
                 case 1 -> clienteService.alterarNome();
                 case 2 -> clienteService.alterarTelefone();
                 case 3 -> clienteService.alterarEmail();
@@ -105,16 +103,8 @@ public class MenuCliente implements IMenu {
                 case 5 -> clienteService.alterarCpf();
                 case 6 -> continuarAlteracao = false;
                 case 7 -> System.exit(0);
-            
+                default -> System.out.println("Opcao invalida!");
+            }
         }
-            
-        }
-        
-        
-        
-        
-        
-       
     }
-    
 }
