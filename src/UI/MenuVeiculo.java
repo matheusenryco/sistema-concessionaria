@@ -1,4 +1,3 @@
-
 package UI;
 
 import java.util.Scanner;
@@ -15,71 +14,70 @@ public class MenuVeiculo implements IMenu {
 
     @Override
     public void cadastrar() {
-        boolean continuarCadastro = true;
-        
+        boolean continuarCadastro;
+
         do {
             System.out.println("=== Cadastro de veiculo ===");
-            
+
             System.out.print("Nome: ");
             String nome = scanner.nextLine();
-            
+
             System.out.print("Cor: ");
             String cor = scanner.nextLine();
-            
+
             System.out.print("Numero de marcha: ");
             int numMarcha = scanner.nextInt();
             scanner.nextLine();
-            
+
             System.out.print("Numero de portas: ");
             int numPortas = scanner.nextInt();
             scanner.nextLine();
-                   
+
             System.out.print("Marca: ");
             String marca = scanner.nextLine();
-            
+
             System.out.print("Ano: ");
             int ano = scanner.nextInt();
             scanner.nextLine();
-            
+
+            veiculoService.cadastrar(nome, cor, numMarcha, numPortas, marca, ano);
             System.out.println("Cadastro de veiculo concluido");
 
-            System.out.print("\nDeseja continuar cadastro? (s/n): ");
-            String resposta = scanner.nextLine().toLowerCase();
-            
-            veiculoService.cadastrar(nome, cor, numMarcha, numPortas, marca, ano);
-
-            if (!resposta.equals("s")) {
-                continuarCadastro = false;
-            }
-            if (!resposta.equals("n")) {
-                continuarCadastro = true;
-            }
-            if (!resposta.equals("s") && !resposta.equals("n")) {
-                while(!resposta.equals("s") && !resposta.equals("n")) {
+            String resposta;
+            do {
+                System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+                if (!resposta.equals("s") && !resposta.equals("n")) {
                     System.out.println("Resposta invalida");
-                    System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
-                    resposta = scanner.nextLine().toLowerCase();
                 }
-            }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarCadastro = resposta.equals("s");
         } while (continuarCadastro);
     }
 
     @Override
-    public void consultar(){
+    public void consultar() {
         System.out.println("=== Consultar Veículo ===");
         System.out.print("Digite o nome do veiculo: ");
         String nome = scanner.nextLine();
-        veiculoService.consultar(nome);
+
+        var veiculo = veiculoService.consultar(nome);
+        if (veiculo != null) {
+            System.out.println("Veículo encontrado:");
+            System.out.println(veiculo);
+        } else {
+            System.out.println("Veículo não encontrado.");
+        }
     }
 
-    
     @Override
     public void alterar() {
         boolean continuarAlteracao = true;
         int opcao;
-        while(continuarAlteracao) {
-            
-            System.out.println("--- Alteracao de Veiculo ---");
+
+        while (continuarAlteracao) {
+            System.out.println("=== Alteracao de Veiculo ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Nome");
             System.out.println("[2] - Cor");
@@ -90,7 +88,8 @@ public class MenuVeiculo implements IMenu {
             System.out.println("[7] - Voltar ao menu principal");
             System.out.println("[8] - Sair");
             opcao = scanner.nextInt();
-        
+            scanner.nextLine();
+
             switch(opcao) {
                 case 1 -> veiculoService.alterarNome();
                 case 2 -> veiculoService.alterarCor();
@@ -100,12 +99,8 @@ public class MenuVeiculo implements IMenu {
                 case 6 -> veiculoService.alterarAno();
                 case 7 -> continuarAlteracao = false;
                 case 8 -> System.exit(0);
-        
-        
+                default -> System.out.println("Opcao invalida!");
             }
-    
-}
-    
+        }
     }
 }
-        
