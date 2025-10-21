@@ -1,6 +1,7 @@
 package model;
 
 public class Veiculo {
+    private String chassi;
     private String nome;
     private String cor;
     private int numMarchas;
@@ -8,7 +9,8 @@ public class Veiculo {
     private String marca;
     private int ano;
 
-    public Veiculo(String nome, String cor, int numMarchas, int numPortas, String marca, int ano) {
+    public Veiculo(String chassi, String nome, String cor, int numMarchas, int numPortas, String marca, int ano) {
+        this.chassi = chassi;
         this.nome = nome;
         this.cor = cor;
         this.numMarchas = numMarchas;
@@ -16,6 +18,10 @@ public class Veiculo {
         this.marca = marca;
         this.ano = ano;
     }
+
+    public String getChassi() { return chassi; }
+
+    public void setChassi(String chassi) { this.chassi = chassi; }
 
     public String getNome() { return nome; }
 
@@ -44,10 +50,10 @@ public class Veiculo {
     @Override
     public String toString() {
         return "Nome: " + nome +
-                "\n cor: " + cor +
-                "\n Numero de Marchas : " + numMarchas +
-                "\n Numero de Portas : " + numPortas +
-                "\n Marca: " + marca +
-                "\n Ano: " + ano;
+                "\ncor: " + cor +
+                "\nNumero de Marchas : " + numMarchas +
+                "\nNumero de Portas : " + numPortas +
+                "\nMarca: " + marca +
+                "\nAno: " + ano;
     }
 }
