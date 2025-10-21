@@ -1,6 +1,6 @@
 package model;
 
-public class Cliente{
+public class Cliente {
     private String nome;
     private String telefone;
     private String email;
