@@ -1,6 +1,5 @@
 package UI;
 
-import java.time.LocalDateTime;
 import model.Vendas;
 import model.Cliente;
 import model.Veiculo;
@@ -28,48 +27,195 @@ public class MenuVendas implements IMenu {
 
     @Override
     public void cadastrar() {
-        boolean continuarCadastro;
+        boolean continuarCadastro = true;
 
         do {
             System.out.println("=== Cadastro de Vendas ===");
 
-            System.out.println("Data da venda: ");
+            System.out.print("Data da venda: ");
             String data = scanner.nextLine();
 
-            System.out.println("Valor da venda: ");
+            System.out.print("Valor da venda: R$");
             double valor = scanner.nextDouble();
             scanner.nextLine();
 
-            System.out.println("Nome do cliente: ");
-            String nome = scanner.nextLine();
+            System.out.print("CPF do cliente: ");
+            String cpf = scanner.nextLine();
+            Cliente cliente = clienteService.buscaPorCpf(cpf);
 
-            System.out.println("Telefone: ");
-            String telefone = scanner.nextLine();
+            System.out.print("Matricula do funcionario: ");
+            int matricula = scanner.nextInt();
+            scanner.nextLine();
+            Funcionario funcionario = funcionarioService.buscaPorMatricula(matricula);
 
-            System.out.println("Email: ");
-            String email = scanner.nextLine();
+            System.out.print("Chassi do veiculo: ");
+            String chassi = scanner.nextLine();
+            Veiculo veiculo = veiculoService.consultar(chassi);
 
+            if (cliente != null && funcionario != null && veiculo != null) {
+                vendasService.cadastrar(data, valor, cliente, funcionario, veiculo);
+                System.out.println("Venda cadastrada com sucesso!");
 
-            System.out.println("Venda cadastrada com sucesso!");
-
-            String resposta;
-            do {
                 System.out.print("\nDeseja cadastrar outra venda? (s/n): ");
-                resposta = scanner.nextLine().toLowerCase();
-                if (!resposta.equals("s") && !resposta.equals("n")) {
-                    System.out.println("Resposta invalida");
-                }
-            } while (!resposta.equals("s") && !resposta.equals("n"));
+                String resposta = scanner.nextLine().toLowerCase();
 
-            continuarCadastro = resposta.equals("s");
+                while (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida! Digite 's' ou 'n'.");
+                    System.out.print("Deseja cadastrar outra venda? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
+                }
+
+                continuarCadastro = resposta.equals("s");
+            } else {
+                System.out.println("Erro: Verifique se cliente, funcionario e veiculo existem!");
+                continuarCadastro = false;
+            }
         } while (continuarCadastro);
     }
 
     @Override
     public void consultar() {
+        boolean continuarConsulta = true;
+
+        do {
+            System.out.println("=== Consulta de Vendas ===");
+            System.out.println("Consultar por:");
+            System.out.println("[1] - Cliente");
+            System.out.println("[2] - Funcionario");
+            System.out.println("[3] - Veiculo");
+            System.out.print("R: ");
+
+            int opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+                case 1 -> {
+                    System.out.print("Digite o CPF do cliente: ");
+                    String cpf = scanner.nextLine();
+
+                    Cliente cliente = clienteService.buscaPorCpf(cpf);
+                    Vendas venda = (cliente != null) ? vendasService.consultarPorCliente(cliente) : null;
+
+                    if (venda != null) {
+                        System.out.println("Venda encontrada:");
+                        System.out.println(venda);
+                    } else {
+                        System.out.println("Venda nao encontrada.");
+                    }
+                }
+
+                case 2 -> {
+                    System.out.print("Digite a matricula do funcionario: ");
+                    int matricula = scanner.nextInt();
+                    scanner.nextLine();
+                    Funcionario funcionario = funcionarioService.buscaPorMatricula(matricula);
+                    Vendas venda = (funcionario != null) ? vendasService.consultarPorFuncionario(funcionario) : null;
+
+                    if (venda != null) {
+                        System.out.println("Venda encontrada:");
+                        System.out.println(venda);
+                    } else {
+                        System.out.println("Venda nao encontrada.");
+                    }
+                }
+
+                case 3 -> {
+                    System.out.print("Digite o chassi do veiculo: ");
+                    String chassi = scanner.nextLine();
+                    Veiculo veiculo = veiculoService.consultar(chassi);
+                    Vendas venda = (veiculo != null) ? vendasService.consultarPorVeiculo(veiculo) : null;
+
+                    if (venda != null) {
+                        System.out.println("Venda encontrada:");
+                        System.out.println(venda);
+                    } else {
+                        System.out.println("Venda nao encontrada.");
+                    }
+                }
+
+                default -> System.out.println("Opcao invalida!");
+            }
+
+            System.out.print("\nDeseja consultar outra venda? (s/n): ");
+            String resposta = scanner.nextLine().toLowerCase();
+
+            while (!resposta.equals("s") && !resposta.equals("n")) {
+                System.out.println("Resposta invalida! Digite 's' ou 'n'.");
+                System.out.print("Deseja consultar outra venda? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+            }
+
+            continuarConsulta = resposta.equals("s");
+
+        } while (continuarConsulta);
+
+        System.out.println("Voltando ao menu principal...");
     }
 
     @Override
     public void alterar() {
+        boolean continuarAlteracao = true;
+        int opcao;
+
+        while (continuarAlteracao) {
+            System.out.println("=== Alteracao de Vendas ===");
+            System.out.println("O que deseja alterar: ");
+            System.out.println("[1] - Data");
+            System.out.println("[2] - Valor");
+            System.out.println("[3] - Cliente");
+            System.out.println("[4] - Funcionario");
+            System.out.println("[5] - Veiculo");
+            System.out.println("[6] - Voltar ao menu principal");
+            System.out.println("[7] - Sair");
+            System.out.print("R: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (opcao) {
+                case 1 -> vendasService.alterarData();
+                case 2 -> vendasService.alterarValor();
+                case 3 -> vendasService.alterarCliente();
+                case 4 -> vendasService.alterarFuncionario();
+                case 5 -> vendasService.alterarVeiculo();
+                case 6 -> continuarAlteracao = false;
+                case 7 -> System.exit(0);
+                default -> System.out.println("Opcao invalida!");
+            }
+        }
+    }
+
+    @Override
+    public void remover() {
+        boolean continuarRemocao = true;
+
+        do {
+            System.out.println("=== Remocao de Vendas ===");
+            System.out.print("Digite o chassi do veiculo da venda que deseja remover: ");
+            String chassi = scanner.nextLine();
+
+            Veiculo veiculo = veiculoService.consultar(chassi);
+            Vendas venda = (veiculo != null) ? vendasService.consultarPorVeiculo(veiculo) : null;
+
+            if (venda != null) {
+                vendasService.remover(venda);
+                System.out.println("Venda removida com sucesso!");
+            } else {
+                System.out.println("Venda nao encontrada.");
+            }
+
+            System.out.print("\nDeseja remover outra venda? (s/n): ");
+            String resposta = scanner.nextLine().toLowerCase();
+
+
+            while (!resposta.equals("s") && !resposta.equals("n")) {
+                System.out.println("Resposta invalida! Digite 's' ou 'n'.");
+                System.out.print("Deseja remover outra venda? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+            }
+
+
+        } while (continuarRemocao);
+
+        System.out.println("Voltando ao menu principal...");
     }
 }
