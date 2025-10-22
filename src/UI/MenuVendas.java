@@ -218,4 +218,8 @@ public class MenuVendas implements IMenu {
 
         System.out.println("Voltando ao menu principal...");
     }
+    public void relatorio() {
+        System.out.println("=== RELATORIO DE VENDAS ===");
+        vendasService.relatorio();
+    }
 }

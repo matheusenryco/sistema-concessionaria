@@ -170,4 +170,21 @@ public class VeiculoService {
         veiculos.remove(veiculo);
         System.out.println("Veiculo removido com sucesso");
     }
+    public void relatorio() {
+        int c;
+        c = 0;
+        for (Veiculo veiculo : veiculos) {
+            c += 1;
+            System.out.println("-----------");
+            System.out.println(" Veiculo: " + c);
+            System.out.println("-----------");
+            System.out.println("\nChassi: " + veiculo.getChassi());
+            System.out.println("\nNome: " + veiculo.getNome());
+            System.out.println("\nCor: " + veiculo.getCor());
+            System.out.println("\nNumero de marchas: " + veiculo.getNumMarchas());
+            System.out.println("\nNumero de portas: " + veiculo.getNumPortas());            
+            System.out.println("\nMarca: " + veiculo.getMarca());
+            System.out.println("");
+        }
+    }
 }

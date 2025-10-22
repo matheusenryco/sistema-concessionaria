@@ -21,6 +21,7 @@ public class ClienteService {
         }
         Cliente cliente = new Cliente(nome, telefone, email, rg, cpf);
         clientes.add(cliente);
+        
     }
 
     public Cliente buscaPorCpf(String cpf) {
@@ -135,5 +136,21 @@ public class ClienteService {
     public void remover(Cliente cliente) {
         clientes.remove(cliente);
         System.out.println("Cliente removido com sucesso"); 
+    }
+    public void relatorio() {
+        int c;
+        c = 0;
+        for (Cliente cliente : clientes) {
+            c += 1;
+            System.out.println("-----------");
+            System.out.println(" Cliente : " + c);
+            System.out.println("-----------");
+            System.out.println("\nNome: " + cliente.getNome());
+            System.out.println("\nTelefone: " + cliente.getTelefone());
+            System.out.println("\nEmail: " + cliente.getEmail());
+            System.out.println("\nRG: " + cliente.getRg());
+            System.out.println("\nCPF: " + cliente.getCpf());
+            System.out.println("");
+        }
     }
 }

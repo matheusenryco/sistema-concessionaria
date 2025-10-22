@@ -37,7 +37,8 @@ public class MenuPrincipal {
             System.out.println("[2] - Consultar");
             System.out.println("[3] - Alterar");
             System.out.println("[4] - Remover");
-            System.out.println("[5] - Sair");
+            System.out.println("[5] - Relatorio");
+            System.out.println("[6] - Sair");
             System.out.print("R: ");
 
             try {
@@ -49,7 +50,8 @@ public class MenuPrincipal {
                     case 2 -> menuConsulta();
                     case 3 -> menuAlteracao();
                     case 4 -> menuRemocao();
-                    case 5 -> {
+                    case 5 -> menuRelatorio();
+                    case 6 -> {
                         executando = false;
                         System.out.println("\nEncerrando sistema...");
                     }
@@ -197,6 +199,42 @@ public class MenuPrincipal {
                     case 3 -> menuVeiculo.remover();
                     case 4 -> menuVendas.remover();
                     case 5 -> continuarRemocao = false;
+                    case 6 -> System.exit(0);
+                    default -> System.out.println("Opcao invalida!");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada invalida! Digite apenas numeros.");
+                scanner.nextLine();
+            }
+        }
+    }
+    private void menuRelatorio() {
+        boolean continuarRelatorio = true;
+        int opcao;
+
+        while (continuarRelatorio) {
+            System.out.println("\n=======================================");
+            System.out.println("\t\t\tRELATORIO");
+            System.out.println("\n=======================================");
+            System.out.println("Qual relatorio voce deseja: ");
+            System.out.println("[1] - Cliente");
+            System.out.println("[2] - Funcionario");
+            System.out.println("[3] - Veiculo");
+            System.out.println("[4] - Vendas");
+            System.out.println("[5] - Retornar ao menu principal");
+            System.out.println("[6] - Sair");
+            System.out.print("R: ");
+            
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcao) {
+                    case 1 -> menuCliente.relatorio();
+                    case 2 -> menuFuncionario.relatorio();
+                    case 3 -> menuVeiculo.relatorio();
+                    case 4 -> menuVendas.relatorio();
+                    case 5 -> continuarRelatorio = false;
                     case 6 -> System.exit(0);
                     default -> System.out.println("Opcao invalida!");
                 }

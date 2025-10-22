@@ -173,4 +173,8 @@ public class MenuVeiculo implements IMenu {
 
         System.out.println("Voltando ao menu principal...");
     }
+    public void relatorio() {
+        System.out.println("=== RELATORIO DE VEICULOS ===");
+        veiculoService.relatorio();
+    }
 }

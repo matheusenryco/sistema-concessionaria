@@ -176,4 +176,8 @@ public class MenuFuncionario implements IMenu {
 
         System.out.println("Voltando ao menu principal...");
     }
+    public void relatorio() {
+        System.out.println("=== RELATORIO DE FUNCIONARIOS ===");
+        funcionarioService.relatorio();
+    }
 }

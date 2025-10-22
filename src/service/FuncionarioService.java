@@ -141,4 +141,20 @@ public class FuncionarioService {
         funcionarios.remove(funcionario);
         System.out.println("Funcionario removido com sucesso");
     }
+    public void relatorio() {
+        int c;
+        c = 0;
+        for (Funcionario funcionario : funcionarios) {
+            c += 1;
+            System.out.println("-------------");
+            System.out.println(" Funcionario : " + c);
+            System.out.println("-------------");
+            System.out.println("\nNome: " + funcionario.getNome());
+            System.out.println("\nMatricula: " + funcionario.getNumMatricula());
+            System.out.println("\nQualificacao: " + funcionario.getQualificacao());
+            System.out.println("\nFuncao: " + funcionario.getDescricaoFuncao());
+            System.out.println("\nCarga Horaria: " + funcionario.getCargaHorariaSemanal());
+            System.out.println("");
+        }
+    }
 }
