@@ -4,8 +4,6 @@ import service.ClienteService;
 import service.FuncionarioService;
 import service.VeiculoService;
 import service.VendasService;
-import UI.MenuVendas;
-import UI.MenuCliente;
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -23,7 +21,7 @@ public class MenuPrincipal {
         this.menuFuncionario = new MenuFuncionario(funcionarioService);
         VeiculoService veiculoService = new VeiculoService();
         this.menuVeiculo = new MenuVeiculo(veiculoService);
-        VendasService vendasService = new VendasService();
+        VendasService vendasService = new VendasService(clienteService, funcionarioService, veiculoService);
         this.menuVendas = new MenuVendas(clienteService, funcionarioService, veiculoService, vendasService);
     }
 
@@ -32,11 +30,15 @@ public class MenuPrincipal {
         int opcao;
 
         while (executando) {
-            System.out.println("\n[1] - Cadastrar");
+            System.out.println("\n===========================================");
+            System.out.println("\t\tSISTEMA DE CONCESSIONARIA");
+            System.out.println("===========================================");
+            System.out.println("[1] - Cadastrar");
             System.out.println("[2] - Consultar");
             System.out.println("[3] - Alterar");
             System.out.println("[4] - Remover");
             System.out.println("[5] - Sair");
+            System.out.print("R: ");
 
             try {
                 opcao = scanner.nextInt();
@@ -74,6 +76,7 @@ public class MenuPrincipal {
             System.out.println("[4] - Vendas");
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
+            System.out.print("R: ");
 
             try {
                 opcao = scanner.nextInt();
@@ -109,6 +112,7 @@ public class MenuPrincipal {
             System.out.println("[4] - Vendas");
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
+            System.out.print("R: ");
 
             try {
                 opcao = scanner.nextInt();
@@ -118,7 +122,7 @@ public class MenuPrincipal {
                     case 1 -> menuCliente.consultar();
                     case 2 -> menuFuncionario.consultar();
                     case 3 -> menuVeiculo.consultar();
-                    // case 4 -> menuVendas.cadastrar();
+                    case 4 -> menuVendas.consultar();
                     case 5 -> executando = false;
                     case 6 -> System.exit(0);
                     default -> System.out.println("Opcao invalida!");
@@ -136,7 +140,7 @@ public class MenuPrincipal {
 
         while (continuarAlteracao) {
             System.out.println("\n=======================================");
-            System.out.println("ALTERAR");
+            System.out.println("\t\t\tALTERAR");
             System.out.println("\n=======================================");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Cliente");
@@ -145,6 +149,7 @@ public class MenuPrincipal {
             System.out.println("[4] - Vendas");
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
+            System.out.print("R: ");
 
             try {
                 opcao = scanner.nextInt();
@@ -154,6 +159,7 @@ public class MenuPrincipal {
                     case 1 -> menuCliente.alterar();
                     case 2 -> menuFuncionario.alterar();
                     case 3 -> menuVeiculo.alterar();
+                    case 4 -> menuVendas.alterar();
                     case 5 -> continuarAlteracao = false;
                     default -> System.out.println("Opcao invalida!");
                 }
@@ -161,14 +167,16 @@ public class MenuPrincipal {
                 System.out.println("Entrada invalida, digite apenas numeros");
                 scanner.nextLine();
             }
+
         }
     }
     private void menuRemocao() {
         boolean continuarRemocao = true;
         int opcao;
+
         while (continuarRemocao) {
             System.out.println("\n=======================================");
-            System.out.println("REMOVER");
+            System.out.println("\t\t\tREMOVER");
             System.out.println("\n=======================================");
             System.out.println("O que deseja remover: ");
             System.out.println("[1] - Cliente");
@@ -177,15 +185,24 @@ public class MenuPrincipal {
             System.out.println("[4] - Vendas");
             System.out.println("[5] - Retornar ao menu principal");
             System.out.println("[6] - Sair");
-            opcao = scanner.nextInt();
+            System.out.print("R: ");
 
-            switch (opcao) {
-                case 1 -> menuCliente.remover();
-                case 2 -> menuFuncionario.remover();
-                case 3 -> menuVeiculo.remover();
-               // case 4 -> //menuVendas.remover();
-                case 5 -> continuarRemocao = false;
-                case 6 -> System.exit(0);
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcao) {
+                    case 1 -> menuCliente.remover();
+                    case 2 -> menuFuncionario.remover();
+                    case 3 -> menuVeiculo.remover();
+                    case 4 -> menuVendas.remover();
+                    case 5 -> continuarRemocao = false;
+                    case 6 -> System.exit(0);
+                    default -> System.out.println("Opcao invalida!");
+                }
+            } catch (Exception e) {
+                System.out.println("Entrada invalida! Digite apenas numeros.");
+                scanner.nextLine();
             }
         }
     }
