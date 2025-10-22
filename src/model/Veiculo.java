@@ -50,11 +50,11 @@ public class Veiculo {
     @Override
     public String toString() {
         return "Chassi: " + chassi +
-                "\nNome: " + nome +
-                "\nCor: " + cor +
-                "\nNumero de Marchas: " + numMarchas +
-                "\nNumero de Portas: " + numPortas +
-                "\nMarca: " + marca +
-                "\nAno: " + ano;
+                "Nome: " + nome +
+                "Cor: " + cor +
+                "Numero de Marchas: " + numMarchas +
+                "Numero de Portas: " + numPortas +
+                "Marca: " + marca +
+                "Ano: " + ano;
     }
 }
