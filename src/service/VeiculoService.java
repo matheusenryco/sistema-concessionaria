@@ -178,13 +178,12 @@ public class VeiculoService {
             System.out.println("-----------");
             System.out.println(" Veiculo: " + c);
             System.out.println("-----------");
-            System.out.println("\nChassi: " + veiculo.getChassi());
-            System.out.println("\nNome: " + veiculo.getNome());
-            System.out.println("\nCor: " + veiculo.getCor());
-            System.out.println("\nNumero de marchas: " + veiculo.getNumMarchas());
-            System.out.println("\nNumero de portas: " + veiculo.getNumPortas());            
-            System.out.println("\nMarca: " + veiculo.getMarca());
-            System.out.println("");
+            System.out.println("Chassi: " + veiculo.getChassi());
+            System.out.println("Nome: " + veiculo.getNome());
+            System.out.println("Cor: " + veiculo.getCor());
+            System.out.println("Numero de marchas: " + veiculo.getNumMarchas());
+            System.out.println("Numero de portas: " + veiculo.getNumPortas());            
+            System.out.println("Marca: " + veiculo.getMarca());
         }
     }
 }
