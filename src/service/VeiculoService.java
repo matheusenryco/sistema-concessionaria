@@ -171,12 +171,13 @@ public class VeiculoService {
         System.out.println("Veiculo removido com sucesso");
     }
     public void relatorio() {
-        int c;
-        c = 0;
+        int cont = 0;
+
         for (Veiculo veiculo : veiculos) {
-            c += 1;
+            cont += 1;
+
             System.out.println("-----------");
-            System.out.println(" Veiculo: " + c);
+            System.out.println(" Veiculo: " + cont);
             System.out.println("-----------");
             System.out.println("Chassi: " + veiculo.getChassi());
             System.out.println("Nome: " + veiculo.getNome());
