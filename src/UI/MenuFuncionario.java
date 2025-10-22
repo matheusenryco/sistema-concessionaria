@@ -24,13 +24,7 @@ public class MenuFuncionario implements IMenu {
             String nome = scanner.nextLine();
 
             System.out.print("Numero de matricula: ");
-            int numMatricula;
-            try {
-                numMatricula = Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada invalida para matricula. Cancelando este cadastro.");
-                continue;
-            }
+            int numMatricula = scanner.nextInt();
 
             System.out.print("Qualificacao: ");
             String qualificacao = scanner.nextLine();
@@ -39,13 +33,7 @@ public class MenuFuncionario implements IMenu {
             String funcao = scanner.nextLine();
 
             System.out.print("Carga horaria semanal: ");
-            int cargaHoraria;
-            try {
-                cargaHoraria = Integer.parseInt(scanner.nextLine().trim());
-            } catch (NumberFormatException e) {
-                System.out.println("Entrada invalida para carga horaria. Cancelando este cadastro.");
-                continue;
-            }
+            int cargaHoraria = scanner.nextInt();
 
             funcionarioService.cadastrar(nome, numMatricula, qualificacao, funcao, cargaHoraria);
             System.out.println("Funcionario cadastrado com sucesso");
@@ -126,12 +114,16 @@ public class MenuFuncionario implements IMenu {
     
     public void remover() {
         boolean continuarRemocao = true;
+
         while (continuarRemocao) {   
             System.out.println("Remocao de Funcionario");
             System.out.print("Digite o numero de matricula do funcionario que deseja remover: ");
+
             int numMatricula = scanner.nextInt();
             scanner.nextLine();
+
             Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
+
             if (funcionario != null) {
                 System.out.println("Funcionario encontrado!");
                 funcionarioService.remover(funcionario); 
