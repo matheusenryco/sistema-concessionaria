@@ -2,6 +2,7 @@ package UI;
 
 import java.util.Scanner;
 import service.VeiculoService;
+import exception.EntidadeJaExisteException;
 import model.Veiculo;
 
 public class MenuVeiculo implements IMenu {
@@ -20,7 +21,7 @@ public class MenuVeiculo implements IMenu {
         do {
             System.out.println("=== Cadastro de veiculo ===");
 
-            System.out.println("Chassi: ");
+            System.out.print("Chassi: ");
             String chassi = scanner.nextLine();
 
             System.out.print("Nome: ");
@@ -44,37 +45,61 @@ public class MenuVeiculo implements IMenu {
             int ano = scanner.nextInt();
             scanner.nextLine();
 
-            veiculoService.cadastrar(chassi, nome, cor, numMarcha, numPortas, marca, ano);
-            System.out.println("Cadastro de veiculo concluido");
+            try {
+                veiculoService.cadastrar(chassi, nome, cor, numMarcha, numPortas, marca, ano);
+                System.out.println("Cadastro de veiculo concluido!");
 
-            String resposta;
+                String resposta;
 
-            do {
-                System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
-                resposta = scanner.nextLine().toLowerCase();
-                if (!resposta.equals("s") && !resposta.equals("n")) {
-                    System.out.println("Resposta invalida");
-                }
-            } while (!resposta.equals("s") && !resposta.equals("n"));
+                do {
+                    System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
+                    if (!resposta.equals("s") && !resposta.equals("n")) {
+                        System.out.println("Resposta invalida");
+                    }
+                } while (!resposta.equals("s") && !resposta.equals("n"));
 
-            continuarCadastro = resposta.equals("s");
+                continuarCadastro = resposta.equals("s");
+            } catch (EntidadeJaExisteException e) {
+                System.out.println("Erro: " + e.getMessage());
+                continuarCadastro = false;
+            }
         } while (continuarCadastro);
     }
 
     @Override
     public void consultar() {
-        System.out.println("=== Consultar Veículo ===");
-        System.out.print("Digite o chassi do veiculo: ");
-        String chassi = scanner.nextLine();
+        boolean continuarConsulta = true;
 
-        Veiculo veiculo = veiculoService.consultar(chassi);
+        do {
+            System.out.println("=== Consultar Veiculo ===");
+            System.out.print("Digite o chassi do veiculo: ");
+            String chassi = scanner.nextLine();
 
-        if (veiculo != null) {
-            System.out.println("Veículo encontrado:");
-            System.out.println(veiculo);
-        } else {
-            System.out.println("Veículo não encontrado.");
-        }
+            Veiculo veiculo = veiculoService.consultar(chassi);
+
+            if (veiculo != null) {
+                System.out.println("Veiculo encontrado:");
+                System.out.println(veiculo);
+            } else {
+                System.out.println("Veiculo não encontrado.");
+            }
+
+            String resposta;
+            do {
+                System.out.print("\nDeseja consultar outro veiculo? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+
+                if (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida");
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarConsulta = resposta.equals("s");
+
+        } while (continuarConsulta);
+
+        System.out.println("Voltando ao menu principal...");
     }
 
     @Override
@@ -94,6 +119,8 @@ public class MenuVeiculo implements IMenu {
             System.out.println("[7] - Ano");
             System.out.println("[8] - Voltar ao menu principal");
             System.out.println("[9] - Sair");
+            System.out.print("R: ");
+
             opcao = scanner.nextInt();
             scanner.nextLine();
 
@@ -111,11 +138,12 @@ public class MenuVeiculo implements IMenu {
             }
         }
     }
-    
+
     public void remover() {
         boolean continuarRemocao = true;
-        while (continuarRemocao) {   
-            System.out.println("Remocao de Veiculo");
+
+        do {
+            System.out.println("=== Remocao de Veiculo ===");
             System.out.print("Digite o chassi do veiculo que deseja remover: ");
 
             String chassiVeiculo = scanner.nextLine();
@@ -123,12 +151,26 @@ public class MenuVeiculo implements IMenu {
 
             if (veiculo != null) {
                 System.out.println("Veiculo encontrado!");
-                veiculoService.remover(veiculo); 
-                continuarRemocao = false;
+                veiculoService.remover(veiculo);
+                System.out.println("Veiculo removido com sucesso!");
+            } else {
+                System.out.println("Veiculo nao encontrado.");
             }
-            else {
-                System.out.println("Veiculo nao encontrado");
-            }     
-        }
+
+            String resposta;
+            do {
+                System.out.print("\nDeseja remover outro veiculo? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+
+                if (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida");
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarRemocao = resposta.equals("s");
+
+        } while (continuarRemocao);
+
+        System.out.println("Voltando ao menu principal...");
     }
 }
