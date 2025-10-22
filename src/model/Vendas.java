@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Locale;
+
 public class Vendas {
     private String data;
     private double valor;
@@ -37,14 +39,14 @@ public class Vendas {
 
     @Override
     public String toString() {
-        return "=== VENDA ===" +
-                "\nData: " + data +
-                "\nValor: R$ " + String.format("%.2f", valor) +
-                "\n\n=== CLIENTE ===" +
-                "\n" + cliente +
-                "\n\n=== FUNCIONARIO ===" +
-                "\n" + funcionario +
-                "\n\n=== VEICULO ===" +
-                "\n" + veiculo;
+        return "=== VENDA ===\n" +
+                "Data: " + data + "\n" +
+                "Valor: R$ " + String.format("%.2f", valor) +
+                "\n\n=== CLIENTE ===\n" +
+                "Cliente:" + cliente + "\n" +
+                "\n\n=== FUNCIONARIO ===\n" +
+                "Funcionario: " + funcionario + "\n" +
+                "\n\n=== VEICULO ===\n" +
+                "Veiculo: " + veiculo;
     }
 }
