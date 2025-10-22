@@ -19,7 +19,7 @@ public class MenuVeiculo implements IMenu {
         boolean continuarCadastro;
 
         do {
-            System.out.println("=== Cadastro de veiculo ===");
+            System.out.println("\n=== Cadastro de veiculo ===");
 
             System.out.print("Chassi: ");
             String chassi = scanner.nextLine();
@@ -72,7 +72,7 @@ public class MenuVeiculo implements IMenu {
         boolean continuarConsulta = true;
 
         do {
-            System.out.println("=== Consultar Veiculo ===");
+            System.out.println("\n=== Consultar Veiculo ===");
             System.out.print("Digite o chassi do veiculo: ");
             String chassi = scanner.nextLine();
 
@@ -108,7 +108,7 @@ public class MenuVeiculo implements IMenu {
         int opcao;
 
         while (continuarAlteracao) {
-            System.out.println("=== Alteracao de Veiculo ===");
+            System.out.println("\n=== Alteracao de Veiculo ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Chassi");
             System.out.println("[2] - Nome");
@@ -120,7 +120,6 @@ public class MenuVeiculo implements IMenu {
             System.out.println("[8] - Voltar ao menu principal");
             System.out.println("[9] - Sair");
             System.out.print("R: ");
-
             opcao = scanner.nextInt();
             scanner.nextLine();
 
@@ -143,7 +142,7 @@ public class MenuVeiculo implements IMenu {
         boolean continuarRemocao = true;
 
         do {
-            System.out.println("=== Remocao de Veiculo ===");
+            System.out.println("\n=== Remocao de Veiculo ===");
             System.out.print("Digite o chassi do veiculo que deseja remover: ");
 
             String chassiVeiculo = scanner.nextLine();
@@ -174,7 +173,7 @@ public class MenuVeiculo implements IMenu {
         System.out.println("Voltando ao menu principal...");
     }
     public void relatorio() {
-        System.out.println("=== RELATORIO DE VEICULOS ===");
+        System.out.println("\n=== RELATORIO DE VEICULOS ===");
         veiculoService.relatorio();
     }
 }
