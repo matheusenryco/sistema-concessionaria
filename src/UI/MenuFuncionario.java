@@ -19,7 +19,7 @@ public class MenuFuncionario implements IMenu {
         boolean continuarCadastro = true;
 
         while (continuarCadastro) {
-            System.out.println("=== Cadastro de funcionario ===");
+            System.out.println("\n=== Cadastro de funcionario ===");
 
             System.out.print("Nome: ");
             String nome = scanner.nextLine();
@@ -66,7 +66,7 @@ public class MenuFuncionario implements IMenu {
         boolean continuarConsulta = true;
 
         do {
-            System.out.println("=== Consultar Funcionario ===");
+            System.out.println("\n=== Consultar Funcionario ===");
             System.out.print("Digite o numero de matricula: ");
 
             int numMatricula;
@@ -109,7 +109,7 @@ public class MenuFuncionario implements IMenu {
         int opcao;
 
         while (continuarAlteracao) {
-            System.out.println("=== Alteracao de Funcionario ===");
+            System.out.println("\n=== Alteracao de Funcionario ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Nome");
             System.out.println("[2] - Numero de matricula");
@@ -144,7 +144,7 @@ public class MenuFuncionario implements IMenu {
         boolean continuarRemocao = true;
 
         do {
-            System.out.println("=== Remocao de Funcionario ===");
+            System.out.println("\n=== Remocao de Funcionario ===");
             System.out.print("Digite o numero de matricula do funcionario que deseja remover: ");
 
             int numMatricula = scanner.nextInt();
@@ -177,7 +177,7 @@ public class MenuFuncionario implements IMenu {
         System.out.println("Voltando ao menu principal...");
     }
     public void relatorio() {
-        System.out.println("=== RELATORIO DE FUNCIONARIOS ===");
+        System.out.println("\n=== RELATORIO DE FUNCIONARIOS ===");
         funcionarioService.relatorio();
     }
 }
