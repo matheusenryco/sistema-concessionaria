@@ -107,6 +107,7 @@ public class MenuCliente implements IMenu {
             }
         }
     }
+    
     public void remover() {
         boolean continuarRemocao = true;
         while (continuarRemocao) {   
