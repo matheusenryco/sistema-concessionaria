@@ -20,6 +20,9 @@ public class MenuVeiculo implements IMenu {
         do {
             System.out.println("=== Cadastro de veiculo ===");
 
+            System.out.println("Chassi: ");
+            String chassi = scanner.nextLine();
+
             System.out.print("Nome: ");
             String nome = scanner.nextLine();
 
@@ -41,10 +44,11 @@ public class MenuVeiculo implements IMenu {
             int ano = scanner.nextInt();
             scanner.nextLine();
 
-            veiculoService.cadastrar(nome, cor, numMarcha, numPortas, marca, ano);
+            veiculoService.cadastrar(chassi, nome, cor, numMarcha, numPortas, marca, ano);
             System.out.println("Cadastro de veiculo concluido");
 
             String resposta;
+
             do {
                 System.out.print("\nDeseja cadastrar outro veiculo? (s/n): ");
                 resposta = scanner.nextLine().toLowerCase();
@@ -60,10 +64,11 @@ public class MenuVeiculo implements IMenu {
     @Override
     public void consultar() {
         System.out.println("=== Consultar Veículo ===");
-        System.out.print("Digite o nome do veiculo: ");
-        String nome = scanner.nextLine();
+        System.out.print("Digite o chassi do veiculo: ");
+        String chassi = scanner.nextLine();
 
-        var veiculo = veiculoService.consultar(nome);
+        Veiculo veiculo = veiculoService.consultar(chassi);
+
         if (veiculo != null) {
             System.out.println("Veículo encontrado:");
             System.out.println(veiculo);
@@ -80,26 +85,28 @@ public class MenuVeiculo implements IMenu {
         while (continuarAlteracao) {
             System.out.println("=== Alteracao de Veiculo ===");
             System.out.println("O que deseja alterar: ");
-            System.out.println("[1] - Nome");
-            System.out.println("[2] - Cor");
-            System.out.println("[3] - Numero de marchas");
-            System.out.println("[4] - Numero de portas");
-            System.out.println("[5] - Marca");
-            System.out.println("[6] - Ano");
-            System.out.println("[7] - Voltar ao menu principal");
-            System.out.println("[8] - Sair");
+            System.out.println("[1] - Chassi");
+            System.out.println("[2] - Nome");
+            System.out.println("[3] - Cor");
+            System.out.println("[4] - Numero de marchas");
+            System.out.println("[5] - Numero de portas");
+            System.out.println("[6] - Marca");
+            System.out.println("[7] - Ano");
+            System.out.println("[8] - Voltar ao menu principal");
+            System.out.println("[9] - Sair");
             opcao = scanner.nextInt();
             scanner.nextLine();
 
             switch(opcao) {
-                case 1 -> veiculoService.alterarNome();
-                case 2 -> veiculoService.alterarCor();
-                case 3 -> veiculoService.alterarNumMarcha();
-                case 4 -> veiculoService.alterarNumPorta();
-                case 5 -> veiculoService.alterarMarca();
-                case 6 -> veiculoService.alterarAno();
-                case 7 -> continuarAlteracao = false;
-                case 8 -> System.exit(0);
+                case 1 -> veiculoService.alterarChassi();
+                case 2 -> veiculoService.alterarNome();
+                case 3 -> veiculoService.alterarCor();
+                case 4 -> veiculoService.alterarNumMarcha();
+                case 5 -> veiculoService.alterarNumPorta();
+                case 6 -> veiculoService.alterarMarca();
+                case 7 -> veiculoService.alterarAno();
+                case 8 -> continuarAlteracao = false;
+                case 9 -> System.exit(0);
                 default -> System.out.println("Opcao invalida!");
             }
         }
@@ -109,9 +116,11 @@ public class MenuVeiculo implements IMenu {
         boolean continuarRemocao = true;
         while (continuarRemocao) {   
             System.out.println("Remocao de Veiculo");
-            System.out.print("Digite o nome do veiculo que deseja remover: ");
-            String nomeVeiculo = scanner.nextLine();          
-            Veiculo veiculo = veiculoService.consultar(nomeVeiculo);
+            System.out.print("Digite o chassi do veiculo que deseja remover: ");
+
+            String chassiVeiculo = scanner.nextLine();
+            Veiculo veiculo = veiculoService.consultar(chassiVeiculo);
+
             if (veiculo != null) {
                 System.out.println("Veiculo encontrado!");
                 veiculoService.remover(veiculo); 
