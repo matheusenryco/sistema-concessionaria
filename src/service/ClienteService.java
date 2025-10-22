@@ -145,11 +145,11 @@ public class ClienteService {
             System.out.println("-----------");
             System.out.println(" Cliente : " + c);
             System.out.println("-----------");
-            System.out.println("\nNome: " + cliente.getNome());
-            System.out.println("\nTelefone: " + cliente.getTelefone());
-            System.out.println("\nEmail: " + cliente.getEmail());
-            System.out.println("\nRG: " + cliente.getRg());
-            System.out.println("\nCPF: " + cliente.getCpf());
+            System.out.println("Nome: " + cliente.getNome());
+            System.out.println("Telefone: " + cliente.getTelefone());
+            System.out.println("Email: " + cliente.getEmail());
+            System.out.println("RG: " + cliente.getRg());
+            System.out.println("CPF: " + cliente.getCpf());
             System.out.println("");
         }
     }
