@@ -142,12 +142,13 @@ public class FuncionarioService {
         System.out.println("Funcionario removido com sucesso");
     }
     public void relatorio() {
-        int c;
-        c = 0;
+        int cont = 0;
+
         for (Funcionario funcionario : funcionarios) {
-            c += 1;
+            cont += 1;
+
             System.out.println("-------------");
-            System.out.println(" Funcionario : " + c);
+            System.out.println(" Funcionario : " + cont);
             System.out.println("-------------");
             System.out.println("Nome: " + funcionario.getNome());
             System.out.println("Matricula: " + funcionario.getNumMatricula());
