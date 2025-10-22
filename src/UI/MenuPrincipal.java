@@ -215,7 +215,7 @@ public class MenuPrincipal {
         while (continuarRelatorio) {
             System.out.println("\n=======================================");
             System.out.println("\t\t\tRELATORIO");
-            System.out.println("\n=======================================");
+            System.out.println("=======================================");
             System.out.println("Qual relatorio voce deseja: ");
             System.out.println("[1] - Cliente");
             System.out.println("[2] - Funcionario");
