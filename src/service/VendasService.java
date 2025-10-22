@@ -58,16 +58,16 @@ public class VendasService {
         System.out.println("=== ALTERAR DATA ===");
         System.out.print("Digite o chassi do veiculo da venda: ");
         String chassi = scanner.nextLine();
-
+        
         Vendas venda = buscarPorChassi(chassi);
-
+        
         if (venda != null) {
             System.out.println("Venda encontrada");
             System.out.print("Digite a nova data: ");
-
+            
             String novaData = scanner.nextLine();
             venda.setData(novaData);
-
+            
             System.out.println("Data alterada com sucesso");
         } else {
             System.out.println("Venda nao encontrada.");
@@ -78,17 +78,17 @@ public class VendasService {
         System.out.println("=== ALTERAR VALOR ===");
         System.out.print("Digite o chassi do veiculo da venda: ");
         String chassi = scanner.nextLine();
-
+        
         Vendas venda = buscarPorChassi(chassi);
-
+        
         if (venda != null) {
             System.out.println("Venda encontrada");
             System.out.print("Digite o novo valor: ");
-
+            
             double novoValor = scanner.nextDouble();
             scanner.nextLine();
             venda.setValor(novoValor);
-
+            
             System.out.println("Valor alterado com sucesso");
         } else {
             System.out.println("Venda nao encontrada.");
@@ -99,16 +99,16 @@ public class VendasService {
         System.out.println("=== ALTERAR CLIENTE ===");
         System.out.print("Digite o chassi do veiculo da venda: ");
         String chassi = scanner.nextLine();
-
+        
         Vendas venda = buscarPorChassi(chassi);
-
+        
         if (venda != null) {
             System.out.println("Venda encontrada");
             System.out.print("Digite o CPF do novo cliente: ");
-
+            
             String cpf = scanner.nextLine();
             Cliente novoCliente = clienteService.buscaPorCpf(cpf);
-
+            
             if (novoCliente != null) {
                 venda.setCliente(novoCliente);
                 System.out.println("Cliente alterado com sucesso");
@@ -124,17 +124,17 @@ public class VendasService {
         System.out.println("=== ALTERAR FUNCIONARIO ===");
         System.out.print("Digite o chassi do veiculo da venda: ");
         String chassi = scanner.nextLine();
-
+        
         Vendas venda = buscarPorChassi(chassi);
-
+        
         if (venda != null) {
             System.out.println("Venda encontrada");
             System.out.print("Digite a matricula do novo funcionario: ");
-
+            
             int matricula = scanner.nextInt();
             scanner.nextLine();
             Funcionario novoFuncionario = funcionarioService.buscaPorMatricula(matricula);
-
+            
             if (novoFuncionario != null) {
                 venda.setFuncionario(novoFuncionario);
                 System.out.println("Funcionario alterado com sucesso");
@@ -150,16 +150,16 @@ public class VendasService {
         System.out.println("=== ALTERAR VEICULO ===");
         System.out.print("Digite o chassi do veiculo da venda atual: ");
         String chassi = scanner.nextLine();
-
+        
         Vendas venda = buscarPorChassi(chassi);
-
+        
         if (venda != null) {
             System.out.println("Venda encontrada");
             System.out.print("Digite o chassi do novo veiculo: ");
-
+            
             String novoChassi = scanner.nextLine();
             Veiculo novoVeiculo = veiculoService.consultar(novoChassi);
-
+            
             if (novoVeiculo != null) {
                 venda.setVeiculo(novoVeiculo);
                 System.out.println("Veiculo alterado com sucesso");
@@ -184,18 +184,18 @@ public class VendasService {
         return vendas.remove(venda);
     }
     public void relatorio() {
-        int c;
-        c = 0;
+        int cont = 0;
+
         for (Vendas venda : vendas) {
-            c += 1;
+            cont += 1;
             System.out.println("---------");
-            System.out.println(" Venda: " + c);
+            System.out.println(" Venda: " + cont);
             System.out.println("---------");
             System.out.println("\nData: " + venda.getData());
             System.out.println("\nValor: " + venda.getValor());
             System.out.println("\nCliente: " + venda.getCliente());
-            System.out.println("\nFuncionario: \n" + venda.getFuncionario());
-            System.out.println("\nVeiculo: \n" + venda.getVeiculo());            
+            System.out.println("\nFuncionario: " + venda.getFuncionario());
+            System.out.println("\nVeiculo: " + venda.getVeiculo());
             System.out.println("");
         }
     }
