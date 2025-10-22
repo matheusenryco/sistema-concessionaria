@@ -2,6 +2,7 @@ package UI;
 
 import model.Cliente;
 import service.ClienteService;
+import exception.EntidadeJaExisteException;
 import java.util.Scanner;
 
 public class MenuCliente implements IMenu {
@@ -15,7 +16,7 @@ public class MenuCliente implements IMenu {
 
     @Override
     public void cadastrar() {
-        boolean continuarCadastro;
+        boolean continuarCadastro = true;
 
         do {
             System.out.println("=== Cadastro de Cliente ===");
@@ -35,20 +36,25 @@ public class MenuCliente implements IMenu {
             System.out.print("CPF: ");
             String cpf = scanner.nextLine();
 
-            clienteService.cadastrar(nome, telefone, email, rg, cpf);
-            System.out.println("Cliente cadastrado com sucesso!");
+            try {
+                clienteService.cadastrar(nome, telefone, email, rg, cpf);
+                System.out.println("Cliente cadastrado com sucesso!");
 
-            String resposta;
-            do {
-                System.out.print("\nDeseja cadastrar outro cliente? (s/n): ");
-                resposta = scanner.nextLine().toLowerCase();
+                String resposta;
+                do {
+                    System.out.print("\nDeseja cadastrar outro cliente? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
 
-                if (!resposta.equals("s") && !resposta.equals("n")) {
-                    System.out.println("Resposta invalida");
-                }
-            } while (!resposta.equals("s") && !resposta.equals("n"));
+                    if (!resposta.equals("s") && !resposta.equals("n")) {
+                        System.out.println("Resposta invalida");
+                    }
+                } while (!resposta.equals("s") && !resposta.equals("n"));
 
-            continuarCadastro = resposta.equals("s");
+                continuarCadastro = resposta.equals("s");
+            } catch (EntidadeJaExisteException e) {
+                System.out.println("Erro: " + e.getMessage());
+                continuarCadastro = false;
+            }
 
         } while (continuarCadastro);
 
@@ -57,19 +63,38 @@ public class MenuCliente implements IMenu {
 
     @Override
     public void consultar() {
-        System.out.println("=== Consulta de Cliente ===");
+        boolean continuarConsulta = true;
 
-        System.out.print("Digite o CPF do cliente: ");
-        String cpf = scanner.nextLine();
+        do {
+            System.out.println("=== Consulta de Cliente ===");
 
-        Cliente cliente = clienteService.buscaPorCpf(cpf);
+            System.out.print("Digite o CPF do cliente: ");
+            String cpf = scanner.nextLine();
 
-        if (cliente != null) {
-            System.out.println("Cliente encontrado:");
-            System.out.println(cliente);
-        } else {
-            System.out.println("Cliente não encontrado.");
-        }
+            Cliente cliente = clienteService.buscaPorCpf(cpf);
+
+            if (cliente != null) {
+                System.out.println("Cliente encontrado:");
+                System.out.println(cliente);
+            } else {
+                System.out.println("Cliente não encontrado.");
+            }
+
+            String resposta;
+            do {
+                System.out.print("\nDeseja consultar outro cliente? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+
+                if (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida");
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarConsulta = resposta.equals("s");
+
+        } while (continuarConsulta);
+
+        System.out.println("Voltando ao menu principal...");
     }
 
     @Override
@@ -87,6 +112,7 @@ public class MenuCliente implements IMenu {
             System.out.println("[5] - CPF");
             System.out.println("[6] - Voltar ao menu principal");
             System.out.println("[7] - Sair");
+            System.out.print("R: ");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine().trim());
@@ -110,19 +136,36 @@ public class MenuCliente implements IMenu {
     
     public void remover() {
         boolean continuarRemocao = true;
-        while (continuarRemocao) {   
-            System.out.println("Remocao de Cliente");
+
+        do {
+            System.out.println("=== Remocao de Cliente ===");
             System.out.print("Digite o CPF do cliente que deseja remover: ");
             String cpf = scanner.nextLine();
+
             Cliente cliente = clienteService.buscaPorCpf(cpf);
+
             if (cliente != null) {
                 System.out.println("Cliente encontrado!");
-                clienteService.remover(cliente); 
-                continuarRemocao = false;
+                clienteService.remover(cliente);
+                System.out.println("Cliente removido com sucesso!");
+            } else {
+                System.out.println("Cliente não encontrado.");
             }
-            else {
-                System.out.println("Cliente não encontrado");
-            }     
-        } 
+
+            String resposta;
+            do {
+                System.out.print("\nDeseja remover outro cliente? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+
+                if (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida");
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarRemocao = resposta.equals("s");
+
+        } while (continuarRemocao);
+
+        System.out.println("Voltando ao menu principal...");
     }
 }
