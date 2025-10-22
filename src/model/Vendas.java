@@ -1,8 +1,5 @@
 package model;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Vendas {
     private String data;
     private double valor;
@@ -40,13 +37,14 @@ public class Vendas {
 
     @Override
     public String toString() {
-        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-     
-        return "Vendas: " +
-                "\nData: " + fmt +
-                "\nValor: R$ " + valor +
-                "\nCliente: " + cliente +
-                "\nFuncionario: " + funcionario +
-                "\nveiculo: " + veiculo;
+        return "=== VENDA ===" +
+                "\nData: " + data +
+                "\nValor: R$ " + String.format("%.2f", valor) +
+                "\n\n=== CLIENTE ===" +
+                "\n" + cliente +
+                "\n\n=== FUNCIONARIO ===" +
+                "\n" + funcionario +
+                "\n\n=== VEICULO ===" +
+                "\n" + veiculo;
     }
 }
