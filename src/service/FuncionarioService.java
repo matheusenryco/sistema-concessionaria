@@ -1,18 +1,24 @@
 package service;
 
 import model.Funcionario;
+import exception.EntidadeJaExisteException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Scanner;
 
 public class FuncionarioService {
     private final Set<Funcionario> funcionarios;
+    private final Scanner scanner;
 
     public FuncionarioService() {
         this.funcionarios = new HashSet<>();
+        this.scanner = new Scanner(System.in);
     }
 
     public void cadastrar(String nome, int numMatricula, String qualificacao, String funcao, int cargaHoraria) {
+        if (buscaPorMatricula(numMatricula) != null) {
+            throw new EntidadeJaExisteException("Ja existe um funcionario com a matricula: " + numMatricula);
+        }
         Funcionario funcionario = new Funcionario(nome, numMatricula, qualificacao, funcao, cargaHoraria);
         funcionarios.add(funcionario);
     }
@@ -27,7 +33,6 @@ public class FuncionarioService {
     }
 
     public void alterarNome() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR NOME ===");
         System.out.print("Digite o numero de matricula do funcionario: ");
         int numMatricula = scanner.nextInt();
@@ -49,7 +54,6 @@ public class FuncionarioService {
     }
 
     public void alterarNumMatricula() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR MATRICULA ===");
         System.out.print("Digite o numero de matricula do funcionario: ");
         int numMatricula = scanner.nextInt();
@@ -71,7 +75,6 @@ public class FuncionarioService {
     }
 
     public void alterarQualificacao() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR QUALIFICACAO ===");
         System.out.print("Digite o numero de matricula do funcionario: ");
         int numMatricula = scanner.nextInt();
@@ -93,7 +96,6 @@ public class FuncionarioService {
     }
 
     public void alterarDescricaoFuncao() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR DESCRICAO DE FUNCAO ===");
         System.out.print("Digite o numero de matricula do funcionario: ");
         int numMatricula = scanner.nextInt();
@@ -115,7 +117,6 @@ public class FuncionarioService {
     }
 
     public void alterarCargaHoraria() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR CARGA HORARIA SEMANAL ===");
         System.out.print("Digite o numero de matricula do funcionario: ");
         int numMatricula = scanner.nextInt();
@@ -129,12 +130,13 @@ public class FuncionarioService {
 
             int novaCargaHoraria = scanner.nextInt();
             funcionario.setCargaHorariaSemanal(novaCargaHoraria);
-            
+
             System.out.println("Carga horaria alterada com sucesso");
         } else {
             System.out.println("Funcionario nao encontrado.");
         }
     }
+
     public void remover(Funcionario funcionario){
         funcionarios.remove(funcionario);
         System.out.println("Funcionario removido com sucesso");
