@@ -40,7 +40,7 @@ public class Funcionario {
         return "Nome: " + nome +
                 "\nMatricula: " + numMatricula +
                 "\nQualificacao: " + qualificacao +
-                "\nDescricaoo da Funcao : " + descricaoFuncao +
-                "\nCarga Horaria Semanal : " + cargaHorariaSemanal + " horas";
+                "\nDescricao da Funcao: " + descricaoFuncao +
+                "\nCarga Horaria Semanal: " + cargaHorariaSemanal + " horas";
     }
 }
