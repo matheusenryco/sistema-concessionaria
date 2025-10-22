@@ -19,7 +19,7 @@ public class MenuCliente implements IMenu {
         boolean continuarCadastro = true;
 
         do {
-            System.out.println("=== Cadastro de Cliente ===");
+            System.out.println("\n=== Cadastro de Cliente ===");
 
             System.out.print("Nome: ");
             String nome = scanner.nextLine();
@@ -66,7 +66,7 @@ public class MenuCliente implements IMenu {
         boolean continuarConsulta = true;
 
         do {
-            System.out.println("=== Consulta de Cliente ===");
+            System.out.println("\n=== Consulta de Cliente ===");
 
             System.out.print("Digite o CPF do cliente: ");
             String cpf = scanner.nextLine();
@@ -74,8 +74,8 @@ public class MenuCliente implements IMenu {
             Cliente cliente = clienteService.buscaPorCpf(cpf);
 
             if (cliente != null) {
-                System.out.println("Cliente encontrado:");
-                System.out.print(cliente);
+                System.out.println("\n=== Cliente Encontrado ===");
+                System.out.println(cliente);
             } else {
                 System.out.println("Cliente não encontrado.");
             }
@@ -103,7 +103,7 @@ public class MenuCliente implements IMenu {
         int opcao;
 
         while (continuarAlteracao) {
-            System.out.println("=== Alteracao de Cliente ===");
+            System.out.println("\n=== Alteracao de Cliente ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Nome");
             System.out.println("[2] - Telefone");
@@ -138,7 +138,7 @@ public class MenuCliente implements IMenu {
         boolean continuarRemocao = true;
 
         do {
-            System.out.println("=== Remocao de Cliente ===");
+            System.out.println("\n=== Remocao de Cliente ===");
             System.out.print("Digite o CPF do cliente que deseja remover: ");
             String cpf = scanner.nextLine();
 
@@ -169,7 +169,7 @@ public class MenuCliente implements IMenu {
         System.out.println("Voltando ao menu principal...");
     }
     public void relatorio() {
-        System.out.println("=== RELATORIO DE CLIENTES ===");
+        System.out.println("\n=== RELATORIO DE CLIENTES ===");
         clienteService.relatorio();
     }
 }
