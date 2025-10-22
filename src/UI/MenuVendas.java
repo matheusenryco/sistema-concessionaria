@@ -30,12 +30,12 @@ public class MenuVendas implements IMenu {
         boolean continuarCadastro = true;
 
         do {
-            System.out.println("=== Cadastro de Vendas ===");
+            System.out.println("\n=== Cadastro de Vendas ===");
 
             System.out.print("Data da venda: ");
             String data = scanner.nextLine();
 
-            System.out.print("Valor da venda: R$");
+            System.out.print("Valor da venda: R$ ");
             double valor = scanner.nextDouble();
             scanner.nextLine();
 
@@ -78,7 +78,7 @@ public class MenuVendas implements IMenu {
         boolean continuarConsulta = true;
 
         do {
-            System.out.println("=== Consulta de Vendas ===");
+            System.out.println("\n=== Consulta de Vendas ===");
             System.out.println("Consultar por:");
             System.out.println("[1] - Cliente");
             System.out.println("[2] - Funcionario");
@@ -158,7 +158,7 @@ public class MenuVendas implements IMenu {
         int opcao;
 
         while (continuarAlteracao) {
-            System.out.println("=== Alteracao de Vendas ===");
+            System.out.println("\n=== Alteracao de Vendas ===");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Data");
             System.out.println("[2] - Valor");
@@ -189,7 +189,7 @@ public class MenuVendas implements IMenu {
         boolean continuarRemocao = true;
 
         do {
-            System.out.println("=== Remocao de Vendas ===");
+            System.out.println("\n=== Remocao de Vendas ===");
             System.out.print("Digite o chassi do veiculo da venda que deseja remover: ");
             String chassi = scanner.nextLine();
 
@@ -213,13 +213,12 @@ public class MenuVendas implements IMenu {
                 resposta = scanner.nextLine().toLowerCase();
             }
 
-
         } while (continuarRemocao);
 
         System.out.println("Voltando ao menu principal...");
     }
     public void relatorio() {
-        System.out.println("=== RELATORIO DE VENDAS ===");
+        System.out.println("\n=== RELATORIO DE VENDAS ===");
         vendasService.relatorio();
     }
 }
