@@ -1,6 +1,7 @@
 package service;
 
 import model.Veiculo;
+import exception.EntidadeJaExisteException;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -15,6 +16,10 @@ public class VeiculoService {
     }
 
     public void cadastrar(String chassi, String nome, String cor, int numMarcha, int numPorta, String marca, int ano) {
+        if (consultar(chassi) != null) {
+            throw new EntidadeJaExisteException("Ja existe um veiculo cadastrado com o chassi: " + chassi);
+        }
+
         Veiculo veiculo = new Veiculo(chassi, nome, cor, numMarcha, numPorta, marca, ano);
         veiculos.add(veiculo);
     }
