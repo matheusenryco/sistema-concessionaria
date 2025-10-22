@@ -36,10 +36,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Nome: " + nome +
-                "Telefone: " + telefone +
-                "Email: " + email +
-                "RG: " + rg +
+        return "Nome: " + nome + "\n" +
+                "Telefone: " + telefone + "\n" +
+                "Email: " + email + "\n" +
+                "RG: " + rg + "\n" +
                 "CPF: " + cpf;
     }
 }
