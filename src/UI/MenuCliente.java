@@ -75,7 +75,7 @@ public class MenuCliente implements IMenu {
 
             if (cliente != null) {
                 System.out.println("Cliente encontrado:");
-                System.out.println(cliente);
+                System.out.print(cliente);
             } else {
                 System.out.println("Cliente não encontrado.");
             }
