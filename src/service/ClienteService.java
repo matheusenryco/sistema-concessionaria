@@ -137,14 +137,16 @@ public class ClienteService {
         clientes.remove(cliente);
         System.out.println("Cliente removido com sucesso"); 
     }
+
     public void relatorio() {
-        int c;
-        c = 0;
+        int cont = 0;
+
         for (Cliente cliente : clientes) {
-            c += 1;
-            System.out.println("-----------");
-            System.out.println(" Cliente : " + c);
-            System.out.println("-----------");
+            cont += 1;
+
+            System.out.println("-------------");
+            System.out.println(" Cliente: " + cont);
+            System.out.println("-------------");
             System.out.println("Nome: " + cliente.getNome());
             System.out.println("Telefone: " + cliente.getTelefone());
             System.out.println("Email: " + cliente.getEmail());

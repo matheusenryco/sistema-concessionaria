@@ -37,10 +37,10 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Nome: " + nome +
-                "Matricula: " + numMatricula +
-                "Qualificacao: " + qualificacao +
-                "Descricao da Funcao: " + descricaoFuncao +
+        return "Nome: " + nome + "\n" +
+                "Matricula: " + numMatricula + "\n" +
+                "Qualificacao: " + qualificacao + "\n" +
+                "Descricao da Funcao: " + descricaoFuncao + "\n" +
                 "Carga Horaria Semanal: " + cargaHorariaSemanal + " horas";
     }
 }
