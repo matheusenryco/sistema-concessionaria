@@ -1,20 +1,26 @@
 package service;
 
 import model.Cliente;
+import exception.EntidadeJaExisteException;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Scanner;
 
 public class ClienteService {
-    private final Set<Cliente> clientes = new HashSet<>();
+    private final Set<Cliente> clientes;
+    private final Scanner scanner;
+
+    public ClienteService() {
+        this.clientes = new HashSet<>();
+        this.scanner = new Scanner(System.in);
+    }
 
     public void cadastrar(String nome, String telefone, String email, String rg, String cpf) {
         if (buscaPorCpf(cpf) != null) {
-            throw new IllegalArgumentException("Cliente com CPF " + cpf + " ja cadastrado.");
-        } else {
-            Cliente cliente = new Cliente(nome, telefone, email, rg, cpf);
-            clientes.add(cliente);
+            throw new EntidadeJaExisteException("Ja existe um cliente cadastrado com o CPF: " + cpf);
         }
+        Cliente cliente = new Cliente(nome, telefone, email, rg, cpf);
+        clientes.add(cliente);
     }
 
     public Cliente buscaPorCpf(String cpf) {
@@ -27,7 +33,6 @@ public class ClienteService {
     }
 
     public void alterarNome() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR NOME ===");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
@@ -48,7 +53,6 @@ public class ClienteService {
     }
 
     public void alterarTelefone() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR TELEFONE ===");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
@@ -69,7 +73,6 @@ public class ClienteService {
     }
 
     public void alterarEmail() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR EMAIL ===");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
@@ -90,7 +93,6 @@ public class ClienteService {
     }
 
     public void alterarRg() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR RG ===");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
@@ -111,7 +113,6 @@ public class ClienteService {
     }
 
     public void alterarCpf() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR CPF ===");
         System.out.print("Digite o CPF do cliente: ");
         String cpf = scanner.nextLine();
