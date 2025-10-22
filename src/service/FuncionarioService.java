@@ -149,11 +149,11 @@ public class FuncionarioService {
             System.out.println("-------------");
             System.out.println(" Funcionario : " + c);
             System.out.println("-------------");
-            System.out.println("\nNome: " + funcionario.getNome());
-            System.out.println("\nMatricula: " + funcionario.getNumMatricula());
-            System.out.println("\nQualificacao: " + funcionario.getQualificacao());
-            System.out.println("\nFuncao: " + funcionario.getDescricaoFuncao());
-            System.out.println("\nCarga Horaria: " + funcionario.getCargaHorariaSemanal());
+            System.out.println("Nome: " + funcionario.getNome());
+            System.out.println("Matricula: " + funcionario.getNumMatricula());
+            System.out.println("Qualificacao: " + funcionario.getQualificacao());
+            System.out.println("Funcao: " + funcionario.getDescricaoFuncao());
+            System.out.println("Carga Horaria: " + funcionario.getCargaHorariaSemanal());
             System.out.println("");
         }
     }
