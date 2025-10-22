@@ -2,6 +2,7 @@ package UI;
 
 import model.Funcionario;
 import service.FuncionarioService;
+import exception.EntidadeJaExisteException;
 import java.util.Scanner;
 
 public class MenuFuncionario implements IMenu {
@@ -25,6 +26,7 @@ public class MenuFuncionario implements IMenu {
 
             System.out.print("Numero de matricula: ");
             int numMatricula = scanner.nextInt();
+            scanner.nextLine();
 
             System.out.print("Qualificacao: ");
             String qualificacao = scanner.nextLine();
@@ -34,20 +36,26 @@ public class MenuFuncionario implements IMenu {
 
             System.out.print("Carga horaria semanal: ");
             int cargaHoraria = scanner.nextInt();
+            scanner.nextLine();
 
-            funcionarioService.cadastrar(nome, numMatricula, qualificacao, funcao, cargaHoraria);
-            System.out.println("Funcionario cadastrado com sucesso");
+            try {
+                funcionarioService.cadastrar(nome, numMatricula, qualificacao, funcao, cargaHoraria);
+                System.out.println("Funcionario cadastrado com sucesso");
 
-            String resposta;
-            do {
-                System.out.print("\nDeseja cadastrar outro funcionario? (s/n): ");
-                resposta = scanner.nextLine().toLowerCase();
-                if (!resposta.equals("s") && !resposta.equals("n")) {
-                    System.out.println("Resposta invalida");
-                }
-            } while (!resposta.equals("s") && !resposta.equals("n"));
+                String resposta;
+                do {
+                    System.out.print("\nDeseja cadastrar outro funcionario? (s/n): ");
+                    resposta = scanner.nextLine().toLowerCase();
+                    if (!resposta.equals("s") && !resposta.equals("n")) {
+                        System.out.println("Resposta invalida");
+                    }
+                } while (!resposta.equals("s") && !resposta.equals("n"));
 
-            continuarCadastro = resposta.equals("s");
+                continuarCadastro = resposta.equals("s");
+            } catch (EntidadeJaExisteException e) {
+                System.out.println("Erro: " + e.getMessage());
+                continuarCadastro = false;
+            }
         }
 
         System.out.println("Voltando ao menu principal...");
@@ -55,25 +63,44 @@ public class MenuFuncionario implements IMenu {
 
     @Override
     public void consultar() {
-        System.out.println("=== Consultar Funcionario ===");
-        System.out.print("Digite o numero de matricula: ");
+        boolean continuarConsulta = true;
 
-        int numMatricula;
-        try {
-            numMatricula = Integer.parseInt(scanner.nextLine().trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Entrada invalida para matricula.");
-            return;
-        }
+        do {
+            System.out.println("=== Consultar Funcionario ===");
+            System.out.print("Digite o numero de matricula: ");
 
-        Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
+            int numMatricula;
+            try {
+                numMatricula = Integer.parseInt(scanner.nextLine().trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada invalida para matricula.");
+                continue;
+            }
 
-        if (funcionario != null) {
-            System.out.println("\n=== Funcionario Encontrado ===");
-            System.out.println(funcionario);
-        } else {
-            System.out.println("Funcionario nao encontrado!");
-        }
+            Funcionario funcionario = funcionarioService.buscaPorMatricula(numMatricula);
+
+            if (funcionario != null) {
+                System.out.println("\n=== Funcionario Encontrado ===");
+                System.out.println(funcionario);
+            } else {
+                System.out.println("Funcionario nao encontrado!");
+            }
+
+            String resposta;
+            do {
+                System.out.print("\nDeseja consultar outro funcionario? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+
+                if (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida");
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarConsulta = resposta.equals("s");
+
+        } while (continuarConsulta);
+
+        System.out.println("Voltando ao menu principal...");
     }
 
     @Override
@@ -91,6 +118,7 @@ public class MenuFuncionario implements IMenu {
             System.out.println("[5] - Carga horaria");
             System.out.println("[6] - Voltar ao menu principal");
             System.out.println("[7] - Sair");
+            System.out.print("R: ");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine().trim());
@@ -111,12 +139,12 @@ public class MenuFuncionario implements IMenu {
             }
         }
     }
-    
+
     public void remover() {
         boolean continuarRemocao = true;
 
-        while (continuarRemocao) {   
-            System.out.println("Remocao de Funcionario");
+        do {
+            System.out.println("=== Remocao de Funcionario ===");
             System.out.print("Digite o numero de matricula do funcionario que deseja remover: ");
 
             int numMatricula = scanner.nextInt();
@@ -126,12 +154,26 @@ public class MenuFuncionario implements IMenu {
 
             if (funcionario != null) {
                 System.out.println("Funcionario encontrado!");
-                funcionarioService.remover(funcionario); 
-                continuarRemocao = false;
+                funcionarioService.remover(funcionario);
+                System.out.println("Funcionario removido com sucesso!");
+            } else {
+                System.out.println("Funcionario nao encontrado.");
             }
-            else {
-                System.out.println("Funcionario nao encontrado");
-            }     
-        }
+
+            String resposta;
+            do {
+                System.out.print("\nDeseja remover outro funcionario? (s/n): ");
+                resposta = scanner.nextLine().toLowerCase();
+
+                if (!resposta.equals("s") && !resposta.equals("n")) {
+                    System.out.println("Resposta invalida");
+                }
+            } while (!resposta.equals("s") && !resposta.equals("n"));
+
+            continuarRemocao = resposta.equals("s");
+
+        } while (continuarRemocao);
+
+        System.out.println("Voltando ao menu principal...");
     }
 }
