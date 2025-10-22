@@ -7,27 +7,47 @@ import java.util.Scanner;
 
 public class VeiculoService {
     private final List<Veiculo> veiculos;
+    private final Scanner scanner;
 
     public VeiculoService() {
         this.veiculos = new ArrayList<>();
+        this.scanner = new Scanner(System.in);
     }
 
-    public void cadastrar(String nome, String cor, int numMarcha, int numPorta, String marca, int ano) {
-        Veiculo veiculo = new Veiculo(nome, cor, numMarcha, numPorta, marca, ano);
+    public void cadastrar(String chassi, String nome, String cor, int numMarcha, int numPorta, String marca, int ano) {
+        Veiculo veiculo = new Veiculo(chassi, nome, cor, numMarcha, numPorta, marca, ano);
         veiculos.add(veiculo);
     }
 
-    public Veiculo consultar(String nome) {
+    public Veiculo consultar(String chassi) {
         for (Veiculo veiculo : veiculos) {
-            if (veiculo.getNome().equalsIgnoreCase(nome)) {
+            if (veiculo.getChassi().equalsIgnoreCase(chassi)) {
                 return veiculo;
             }
         }
         return null;
     }
 
+    public void alterarChassi() {
+        System.out.println("=== ALTERAR CHASSI ===");
+        System.out.print("Digite o chassi do veiculo: ");
+        String chassiVeiculo = scanner.nextLine();
+        Veiculo veiculo = consultar(chassiVeiculo);
+
+        if (veiculo != null) {
+            System.out.println("Veiculo encontrado");
+            System.out.print("Digite o novo chassi: ");
+
+            String novoChassi = scanner.nextLine();
+            veiculo.setChassi(novoChassi);
+
+            System.out.println("Chassi alterado com sucesso");
+        } else {
+            System.out.println("Veiculo nao encontrado.");
+        }
+    }
+
     public void alterarNome() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR NOME ===");
         System.out.print("Digite o nome do veiculo: ");
         String nomeVeiculo = scanner.nextLine();
@@ -47,7 +67,6 @@ public class VeiculoService {
     }
 
     public void alterarCor() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR COR ===");
         System.out.print("Digite o nome do veiculo: ");
         String nomeVeiculo = scanner.nextLine();
@@ -67,7 +86,6 @@ public class VeiculoService {
     }
 
     public void alterarNumMarcha() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR NUMERO DE MARCHA ===");
         System.out.print("Digite o nome do veiculo: ");
         String nomeVeiculo = scanner.nextLine();
@@ -87,7 +105,6 @@ public class VeiculoService {
     }
 
     public void alterarNumPorta() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR NUMERO DE PORTAS ===");
         System.out.print("Digite o nome do veiculo: ");
         String nomeVeiculo = scanner.nextLine();
@@ -107,7 +124,6 @@ public class VeiculoService {
     }
 
     public void alterarMarca() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR MARCA ===");
         System.out.print("Digite o nome do veiculo: ");
         String nomeVeiculo = scanner.nextLine();
@@ -127,7 +143,6 @@ public class VeiculoService {
     }
 
     public void alterarAno() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("=== ALTERAR ANO ===");
         System.out.print("Digite o nome do veiculo: ");
         String nomeVeiculo = scanner.nextLine();
