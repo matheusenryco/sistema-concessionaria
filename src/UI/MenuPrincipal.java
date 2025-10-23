@@ -31,7 +31,7 @@ public class MenuPrincipal {
 
         while (executando) {
             System.out.println("\n===========================================");
-            System.out.println("\t\tSISTEMA DE CONCESSIONARIA");
+            System.out.println("\tSISTEMA DE CONCESSIONARIA");
             System.out.println("===========================================");
             System.out.println("[1] - Cadastrar");
             System.out.println("[2] - Consultar");
@@ -70,7 +70,7 @@ public class MenuPrincipal {
 
         while (executando) {
             System.out.println("\n=======================================");
-            System.out.println("\t\t\tCADASTRO");
+            System.out.println("\t\tCADASTRO");
             System.out.println("=======================================");
             System.out.println("[1] - Cliente");
             System.out.println("[2] - Funcionario");
@@ -106,7 +106,7 @@ public class MenuPrincipal {
 
         while (executando) {
             System.out.println("\n=======================================");
-            System.out.println("\t\t\tCONSULTA");
+            System.out.println("\t\tCONSULTA");
             System.out.println("=======================================");
             System.out.println("[1] - Cliente");
             System.out.println("[2] - Funcionario");
@@ -142,8 +142,8 @@ public class MenuPrincipal {
 
         while (continuarAlteracao) {
             System.out.println("\n=======================================");
-            System.out.println("\t\t\tALTERAR");
-            System.out.println("\n=======================================");
+            System.out.println("\t\tALTERAR");
+            System.out.println("=======================================");
             System.out.println("O que deseja alterar: ");
             System.out.println("[1] - Cliente");
             System.out.println("[2] - Funcionario");
@@ -178,8 +178,8 @@ public class MenuPrincipal {
 
         while (continuarRemocao) {
             System.out.println("\n=======================================");
-            System.out.println("\t\t\tREMOVER");
-            System.out.println("\n=======================================");
+            System.out.println("\t\tREMOVER");
+            System.out.println("=======================================");
             System.out.println("O que deseja remover: ");
             System.out.println("[1] - Cliente");
             System.out.println("[2] - Funcionario");
@@ -214,7 +214,7 @@ public class MenuPrincipal {
 
         while (continuarRelatorio) {
             System.out.println("\n=======================================");
-            System.out.println("\t\t\tRELATORIO");
+            System.out.println("\t\tRELATORIO");
             System.out.println("=======================================");
             System.out.println("Qual relatorio voce deseja: ");
             System.out.println("[1] - Cliente");
