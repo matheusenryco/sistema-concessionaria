@@ -191,11 +191,11 @@ public class VendasService {
             System.out.println("---------");
             System.out.println(" Venda: " + cont);
             System.out.println("---------");
-            System.out.println("\nData: " + venda.getData());
+            System.out.println("Data: " + venda.getData());
             System.out.println("\nValor: " + venda.getValor());
-            System.out.println("\nCliente: " + venda.getCliente());
-            System.out.println("\nFuncionario: " + venda.getFuncionario());
-            System.out.println("\nVeiculo: " + venda.getVeiculo());
+            System.out.println("\nCliente: \n" + venda.getCliente());
+            System.out.println("\nFuncionario: \n" + venda.getFuncionario());
+            System.out.println("\nVeiculo : \n" + venda.getVeiculo());
             System.out.println("");
         }
     }
